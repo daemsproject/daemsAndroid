@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+	android:focusableInTouchMode="true" 
+    android:padding="16dp">
+	<Button  
+	    android:id="@+id/btnSwitch"
+	    android:text="@string/switchContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"/>
+	<EditText
+	    android:id="@+id/tvSearchContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/searchContact"
+        android:singleLine="true"
+        android:gravity="center"/>
+    <ListView
+        android:id="@+id/lvContact"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:divider="@drawable/list_divider"
+    	android:dividerHeight="1dp" 
+        />
+
+</LinearLayout>

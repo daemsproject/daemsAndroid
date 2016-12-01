@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Daems</string>
+    <string name="chat">聊天</string>
+    <string name="contact">联系人</string>
+    <string name="edit">编辑</string>
+    <string name="me">我</string>
+    <string name="manageAccount">账户管理</string>
+    <string name="switchContact">切换账号联系人</string>
+    <string name="searchContact">搜索联系人</string>
+    
+</resources>
