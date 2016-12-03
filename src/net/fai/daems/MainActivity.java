@@ -1,5 +1,9 @@
 package net.fai.daems;
 
+import net.fai.daems.R;
+import net.fai.daems.fragment.ChatFragment;
+import net.fai.daems.fragment.ContactFragment;
+import net.fai.daems.fragment.MeFragment;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -13,10 +17,10 @@ public class MainActivity extends Activity implements
 		RadioGroup.OnCheckedChangeListener {
 
 	private RadioGroup rpTab;
-	private RadioButton rbChat, rbContact, rbDynamic, rbMe;
+	private RadioButton rbChat;
 	private ChatFragment chatFragment;
 	private ContactFragment contactFragment;
-	private MyFragment fg3, fg4;
+	private MeFragment myFragment;
 	private TextView tvTopbar;
 	private ImageButton btnTopbar;
 
@@ -35,8 +39,6 @@ public class MainActivity extends Activity implements
 		rpTab.setOnCheckedChangeListener(this);
 
 		rbChat = (RadioButton) findViewById(R.id.rd_menu_chat);
-		rbContact = (RadioButton) findViewById(R.id.rd_menu_contact);
-		rbMe = (RadioButton) findViewById(R.id.rd_menu_me);
 
 		rbChat.setChecked(true);
 	}
@@ -48,11 +50,8 @@ public class MainActivity extends Activity implements
 		if (contactFragment != null) {
 			transaction.hide(contactFragment);
 		}
-		if (fg3 != null) {
-			transaction.hide(fg3);
-		}
-		if (fg4 != null) {
-			transaction.hide(fg4);
+		if (myFragment != null) {
+			transaction.hide(myFragment);
 		}
 	}
 
@@ -85,11 +84,11 @@ public class MainActivity extends Activity implements
 		case R.id.rd_menu_me:
 			tvTopbar.setText(R.string.me);
 			btnTopbar.setVisibility(View.INVISIBLE);
-			if (fg4 == null) {
-				fg4 = new MyFragment("Œ“");
-				transaction.add(R.id.fragment_container, fg4);
+			if (myFragment == null) {
+				myFragment = new MeFragment(MainActivity.this);
+				transaction.add(R.id.fragment_container, myFragment);
 			} else {
-				transaction.show(fg4);
+				transaction.show(myFragment);
 			}
 			break;
 		}

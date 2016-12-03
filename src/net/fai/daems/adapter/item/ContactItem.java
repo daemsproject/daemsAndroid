@@ -1,4 +1,4 @@
-package net.fai.daems.bean;
+package net.fai.daems.adapter.item;
 
 public class ContactItem {
 	

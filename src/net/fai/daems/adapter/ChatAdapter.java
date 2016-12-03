@@ -3,7 +3,7 @@ package net.fai.daems.adapter;
 import java.util.List;
 
 import net.fai.daems.R;
-import net.fai.daems.bean.ChatItem;
+import net.fai.daems.adapter.item.ChatItem;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

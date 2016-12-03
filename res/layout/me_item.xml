@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+	<View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/greybackground" />
+    <ImageView 
+        android:id="@+id/ivIcon"
+        android:src="@drawable/ic_launcher"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_below="@id/separator"
+    	android:background="@drawable/my_icon_style"/>
+    <TextView 
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@+id/ivIcon"
+        android:layout_below="@id/separator"
+        android:layout_marginLeft="15dp"
+        android:layout_centerVertical="true"/>
+	<TextView 
+        android:id="@+id/tvArrow"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/separator"
+        android:text=">"
+        android:layout_centerVertical="true"
+        android:layout_alignBaseline="@+id/ivIcon"
+        android:textColor="@color/darkgrey"
+        android:textSize="20sp"
+        />
+</RelativeLayout>

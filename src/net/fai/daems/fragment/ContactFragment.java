@@ -1,10 +1,11 @@
-package net.fai.daems;
+package net.fai.daems.fragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import net.fai.daems.R;
 import net.fai.daems.adapter.ContactAdapter;
-import net.fai.daems.bean.ContactItem;
+import net.fai.daems.adapter.item.ContactItem;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;

@@ -13,6 +13,8 @@
     <color name="black">#000000</color>
     <!-- 白色 -->
     <color name="white">#FFFFFF</color>
+    <!-- 灰色背景 -->
+    <color name="greybackground">#F0EFF5</color>
     <!-- 浅灰色 -->
     <color name="lightgrey">#C4C4C4</color>
     <!-- 灰色 -->

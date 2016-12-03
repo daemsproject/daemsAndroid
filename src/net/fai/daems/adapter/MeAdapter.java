@@ -3,21 +3,22 @@ package net.fai.daems.adapter;
 import java.util.List;
 
 import net.fai.daems.R;
-import net.fai.daems.adapter.item.ContactItem;
+import net.fai.daems.adapter.item.MeItem;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ContactAdapter extends BaseAdapter {
+public class MeAdapter extends BaseAdapter {
 	
-	private List<ContactItem> data;
+	private List<MeItem> data;
 	private LayoutInflater inflater;
 	
-	public ContactAdapter(Context context, List<ContactItem> data) {
+	public MeAdapter(Context context, List<MeItem> data) {
 		this.data = data;
 		this.inflater = LayoutInflater.from(context);
 	}
@@ -42,25 +43,27 @@ public class ContactAdapter extends BaseAdapter {
 		ViewHolder viewHolder;
 		if (view == null) {
 			viewHolder = new ViewHolder();
-			view = inflater.inflate(R.layout.contact_item, viewGroup, false);
-			viewHolder.image = (ImageView) view.findViewById(R.id.ivAvatar);
+			view = inflater.inflate(R.layout.me_item, viewGroup, false);
+			viewHolder.icon = (ImageView) view.findViewById(R.id.ivIcon);
 			viewHolder.name = (TextView) view.findViewById(R.id.tvName);
+			viewHolder.view = (View) view.findViewById(R.id.separator);
 			view.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) view.getTag();
 		}
-		ContactItem item = data.get(pos);
-		viewHolder.image.setImageResource(item.imageId);
+		MeItem item = data.get(pos);
+		viewHolder.icon.setImageResource(item.imageId);
 		viewHolder.name.setText(item.name);
+		LayoutParams lp = viewHolder.view.getLayoutParams();
+		lp.height = item.dividerHeight;
+		viewHolder.view.setLayoutParams(lp);
 		return view;
 	}
 	
 	class ViewHolder {
-		public ImageView image;
+		public ImageView icon;
 		public TextView name;
+		public View view;
 	}
 
-	public void setData(List<ContactItem> data) {
-		this.data = data;
-	}
 }

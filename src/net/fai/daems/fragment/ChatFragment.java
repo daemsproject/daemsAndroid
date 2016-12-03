@@ -1,10 +1,14 @@
-package net.fai.daems;
+package net.fai.daems.fragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import net.fai.daems.R;
+import net.fai.daems.R.drawable;
+import net.fai.daems.R.id;
+import net.fai.daems.R.layout;
 import net.fai.daems.adapter.ChatAdapter;
-import net.fai.daems.bean.ChatItem;
+import net.fai.daems.adapter.item.ChatItem;
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
