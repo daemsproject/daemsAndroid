@@ -9,9 +9,11 @@ import net.fai.daems.adapter.item.ChatMsg;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
+import android.view.View.OnTouchListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -21,7 +23,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ChatActivity extends Activity implements OnClickListener, OnItemClickListener, OnFocusChangeListener {
+public class ChatActivity extends Activity implements OnClickListener, OnTouchListener, OnItemClickListener, OnFocusChangeListener {
 	
 	private TextView tvName;
 	private Button btnSend;
@@ -47,6 +49,7 @@ public class ChatActivity extends Activity implements OnClickListener, OnItemCli
 		lvChatRecord = (ListView) findViewById(R.id.lvChatRecord);
 		lvChatRecord.setOnItemClickListener(this);
 		lvChatRecord.setOnFocusChangeListener(this);
+		lvChatRecord.setOnTouchListener(this);
 		lvChatRecord.setAdapter(new ChatMsgViewAdpater(ChatActivity.this, new ArrayList<ChatMsg>()));
 		iBtnBack = (ImageButton) findViewById(R.id.ibtn_back);
 		iBtnBack.setOnClickListener(this);
@@ -67,6 +70,7 @@ public class ChatActivity extends Activity implements OnClickListener, OnItemCli
 			default:
 		}
 	}
+	
 	
 	private void sendMessage(String text) {
 		ChatMsg msg1 = new ChatMsg();
@@ -98,5 +102,17 @@ public class ChatActivity extends Activity implements OnClickListener, OnItemCli
 			mInputMethodManager.hideSoftInputFromWindow(etInput.getWindowToken(), 0);
 			etInput.clearFocus();
 		}
+	}
+
+	@Override
+	public boolean onTouch(View v, MotionEvent event) {
+		switch (v.getId()) {
+		case R.id.lvChatRecord:
+			mInputMethodManager.hideSoftInputFromWindow(etInput.getWindowToken(), 0);
+			break;
+		default:
+            break;
+		}
+		return false;
 	}
 }
