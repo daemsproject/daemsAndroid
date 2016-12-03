@@ -6,8 +6,10 @@ import net.fai.daems.fragment.ContactFragment;
 import net.fai.daems.fragment.MeFragment;
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -63,7 +65,7 @@ public class MainActivity extends Activity implements
 		switch (checkedId) {
 		case R.id.rd_menu_chat:
 			tvTopbar.setText(R.string.chat);
-			btnTopbar.setVisibility(View.VISIBLE);
+			btnTopbar.setVisibility(View.INVISIBLE);
 			if (chatFragment == null) {
 				chatFragment = new ChatFragment(MainActivity.this);
 				transaction.add(R.id.fragment_container, chatFragment);
@@ -74,6 +76,13 @@ public class MainActivity extends Activity implements
 		case R.id.rd_menu_contact:
 			tvTopbar.setText(R.string.contact);
 			btnTopbar.setVisibility(View.VISIBLE);
+			btnTopbar.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(MainActivity.this, ContactAddActivity.class);
+					startActivity(intent);
+				}
+			});
 			if (contactFragment == null) {
 				contactFragment = new ContactFragment(MainActivity.this);
 				transaction.add(R.id.fragment_container, contactFragment);

@@ -22,8 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="net.fai.daems.ChatActivity" >
-        </activity>
+        <activity android:name="net.fai.daems.ChatActivity" />
+        <activity android:name="net.fai.daems.ContactAddActivity" android:theme="@style/Theme.FloatActivity"/>
     </application>
 
 </manifest>

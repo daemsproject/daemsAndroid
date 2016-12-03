@@ -3,22 +3,27 @@ package net.fai.daems.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.fai.daems.ChatActivity;
 import net.fai.daems.R;
 import net.fai.daems.adapter.ContactAdapter;
+import net.fai.daems.adapter.item.ChatItem;
 import net.fai.daems.adapter.item.ContactItem;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
-public class ContactFragment extends Fragment implements OnClickListener {
+public class ContactFragment extends Fragment implements OnClickListener, OnItemClickListener {
 	private Context context;
 	private ListView lvContact;
 	private Button btnSwitch;
@@ -35,6 +40,7 @@ public class ContactFragment extends Fragment implements OnClickListener {
 		btnSwitch.setOnClickListener(this);
 		lvContact = (ListView) view.findViewById(R.id.lvContact);
 		lvContact.setAdapter(new ContactAdapter(context, getContactItems(0)));
+		lvContact.setOnItemClickListener(this);
 		return view;
 	}
 
@@ -61,6 +67,15 @@ public class ContactFragment extends Fragment implements OnClickListener {
 				}
 			}).create();
 		dialog.show();
+	}
+	
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+		 Intent intent = new Intent(context, ChatActivity.class);
+		 ContactItem item = (ContactItem) lvContact.getItemAtPosition(arg2);
+		 intent.putExtra("name", item.name);
+         //启动Intent
+         startActivity(intent);
 	}
 	
 	private String[] getAccounts() {
