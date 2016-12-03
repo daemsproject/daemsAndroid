@@ -9,5 +9,6 @@
     <string name="manageAccount">账户管理</string>
     <string name="switchContact">切换账号联系人</string>
     <string name="searchContact">搜索联系人</string>
+    <string name="send">发送</string>
     
 </resources>

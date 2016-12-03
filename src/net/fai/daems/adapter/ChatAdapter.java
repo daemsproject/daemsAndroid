@@ -59,7 +59,7 @@ public class ChatAdapter extends BaseAdapter {
 		return view;
 	}
 	
-	class ViewHolder {
+	public class ViewHolder {
 		public ImageView image;
 		public TextView name;
 		public TextView date;
