@@ -44,7 +44,7 @@ public class MainActivity extends Activity implements
 
 		rbChat.setChecked(true);
 	}
-	
+
 	public void hideAllFragment(FragmentTransaction transaction) {
 		if (chatFragment != null) {
 			transaction.hide(chatFragment);
@@ -79,7 +79,8 @@ public class MainActivity extends Activity implements
 			btnTopbar.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View v) {
-					Intent intent = new Intent(MainActivity.this, ContactAddActivity.class);
+					Intent intent = new Intent(MainActivity.this,
+							ContactAddActivity.class);
 					startActivity(intent);
 				}
 			});
