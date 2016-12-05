@@ -74,7 +74,8 @@ public class MainActivity extends Activity implements
 			}
 			break;
 		case R.id.rd_menu_contact:
-			tvTopbar.setText(R.string.contact);
+			tvTopbar.setText(NDKTestFromJNI());
+//			tvTopbar.setText(R.string.contact);
 			btnTopbar.setVisibility(View.VISIBLE);
 			btnTopbar.setOnClickListener(new OnClickListener() {
 				@Override
@@ -103,5 +104,11 @@ public class MainActivity extends Activity implements
 			break;
 		}
 		transaction.commit();
+	}
+	
+	public native String NDKTestFromJNI();
+	
+	static {
+		System.loadLibrary("daems");
 	}
 }
