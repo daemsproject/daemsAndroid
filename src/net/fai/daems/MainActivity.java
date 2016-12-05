@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements
 		RadioGroup.OnCheckedChangeListener {
@@ -112,8 +113,8 @@ public class MainActivity extends Activity implements
 		System.loadLibrary("daems");
 	}
 	
-	public void callback(int notify_id, int param)  
+	public void callback(String msg)  
     {  
-        System.out.println();
+        Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
     }    
 }
