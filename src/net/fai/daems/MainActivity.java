@@ -111,4 +111,9 @@ public class MainActivity extends Activity implements
 	static {
 		System.loadLibrary("daems");
 	}
+	
+	public void callback(int notify_id, int param)  
+    {  
+        System.out.println();
+    }    
 }

@@ -2,5 +2,8 @@
 extern "C"
 jstring Java_net_fai_daems_MainActivity_NDKTestFromJNI(JNIEnv* env,
 		jobject thiz) {
-	return env->NewStringUTF("Hello from JNI !");
+	jclass cls = env->GetObjectClass(thiz);
+	jmethodID callback = env->GetMethodID(cls,"callback","(II)V");
+	env->CallVoidMethod(thiz,callback,5,10);
+	return env->NewStringUTF("Hello from C++");
 }
