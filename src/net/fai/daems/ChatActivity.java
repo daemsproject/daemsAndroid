@@ -4,6 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 import net.fai.daems.adapter.ChatMsgViewAdpater;
 import net.fai.daems.adapter.item.ChatMsg;
 import android.app.Activity;
@@ -25,12 +28,12 @@ import android.widget.TextView;
 
 public class ChatActivity extends Activity implements OnClickListener, OnTouchListener, OnItemClickListener, OnFocusChangeListener {
 	
-	private TextView tvName;
-	private Button btnSend;
-	private ImageButton iBtnBack;
-	private EditText etInput;
+	@Bind(R.id.tvName) TextView tvName;
+	@Bind(R.id.btn_send) Button btnSend;
+	@Bind(R.id.ibtn_back) ImageButton iBtnBack;
+	@Bind(R.id.etInput) EditText etInput;
+	@Bind(R.id.lvChatRecord) ListView lvChatRecord;
 	private InputMethodManager mInputMethodManager;
-	private ListView lvChatRecord;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	private String name;
 
@@ -38,20 +41,16 @@ public class ChatActivity extends Activity implements OnClickListener, OnTouchLi
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.chat);
+		ButterKnife.bind(this);
 		mInputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 		Intent intent = getIntent();
 		name = intent.getStringExtra("name");
-		tvName = (TextView) findViewById(R.id.tvName);
 		tvName.setText(name);
-		btnSend = (Button) findViewById(R.id.btn_send);
 		btnSend.setOnClickListener(this);
-		etInput = (EditText) findViewById(R.id.etInput);
-		lvChatRecord = (ListView) findViewById(R.id.lvChatRecord);
 		lvChatRecord.setOnItemClickListener(this);
 		lvChatRecord.setOnFocusChangeListener(this);
 		lvChatRecord.setOnTouchListener(this);
 		lvChatRecord.setAdapter(new ChatMsgViewAdpater(ChatActivity.this, new ArrayList<ChatMsg>()));
-		iBtnBack = (ImageButton) findViewById(R.id.ibtn_back);
 		iBtnBack.setOnClickListener(this);
 	}
 

@@ -6,44 +6,33 @@ import java.util.Date;
 import java.util.List;
 
 import net.fai.daems.adapter.AccountAdpater;
-import net.fai.daems.adapter.ChatMsgViewAdpater;
 import net.fai.daems.adapter.item.Account;
-import net.fai.daems.adapter.item.ChatMsg;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnFocusChangeListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class AccountActivity extends Activity implements OnClickListener {
+public class AccountActivity extends Activity {
 	
-	private Button btnAdd;
-	private ImageButton btnBack;
-	private ListView lvAccount;
+	@Bind(R.id.btnAdd) Button btnAdd;
+	@Bind(R.id.ibtn_back) ImageButton btnBack;
+	@Bind(R.id.lvAccount) ListView lvAccount;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_account);
-		btnAdd = (Button) findViewById(R.id.btnAdd);
-		btnAdd.setOnClickListener(this);
-		btnBack = (ImageButton) findViewById(R.id.ibtn_back);
-		btnBack.setOnClickListener(this);
-		lvAccount = (ListView) findViewById(R.id.lvAccount);
+		ButterKnife.bind(this);
 		lvAccount.setAdapter(new AccountAdpater(AccountActivity.this, getAccount()));
 	}
 
-	@Override
+	@OnClick({R.id.btnAdd, R.id.ibtn_back})
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btnAdd:

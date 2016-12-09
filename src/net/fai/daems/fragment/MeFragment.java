@@ -3,6 +3,9 @@ package net.fai.daems.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 import net.fai.daems.AccountActivity;
 import net.fai.daems.R;
 import net.fai.daems.adapter.MeAdapter;
@@ -20,7 +23,7 @@ import android.widget.ListView;
 
 public class MeFragment extends Fragment implements OnItemClickListener {
 	private Context context;
-	private ListView lvMe;
+	@Bind(R.id.lvMe) ListView lvMe;
 
 	public MeFragment(Context context) {
 		this.context = context;
@@ -30,7 +33,7 @@ public class MeFragment extends Fragment implements OnItemClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.me_fragment, container, false);
-		lvMe = (ListView) view.findViewById(R.id.lvMe);
+		ButterKnife.bind(this, view);
 		lvMe.setAdapter(new MeAdapter(context, getMeItems()));
 		lvMe.setOnItemClickListener(this);
 		return view;

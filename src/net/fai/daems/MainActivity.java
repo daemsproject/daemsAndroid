@@ -1,5 +1,7 @@
 package net.fai.daems;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import net.fai.daems.R;
 import net.fai.daems.fragment.ChatFragment;
 import net.fai.daems.fragment.ContactFragment;
@@ -18,31 +20,22 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity implements
 		RadioGroup.OnCheckedChangeListener {
-
-	private RadioGroup rpTab;
-	private RadioButton rbChat;
+	
 	private ChatFragment chatFragment;
 	private ContactFragment contactFragment;
 	private MeFragment myFragment;
-	private TextView tvTopbar;
-	private ImageButton btnTopbar;
+
+	@Bind(R.id.rd_group) RadioGroup rpTab;
+	@Bind(R.id.rd_menu_chat) RadioButton rbChat;
+	@Bind(R.id.txt_topbar) TextView tvTopbar;
+	@Bind(R.id.btn_topbar) ImageButton btnTopbar;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
-		bindView();
-	}
-
-	private void bindView() {
-		tvTopbar = (TextView) findViewById(R.id.txt_topbar);
-		btnTopbar = (ImageButton) findViewById(R.id.btn_topbar);
-		rpTab = (RadioGroup) findViewById(R.id.rd_group);
+		ButterKnife.bind(this);
 		rpTab.setOnCheckedChangeListener(this);
-
-		rbChat = (RadioButton) findViewById(R.id.rd_menu_chat);
-
 		rbChat.setChecked(true);
 	}
 

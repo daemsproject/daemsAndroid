@@ -5,9 +5,6 @@ import java.util.List;
 
 import net.fai.daems.ChatActivity;
 import net.fai.daems.R;
-import net.fai.daems.R.drawable;
-import net.fai.daems.R.id;
-import net.fai.daems.R.layout;
 import net.fai.daems.adapter.ChatAdapter;
 import net.fai.daems.adapter.item.ChatItem;
 import android.app.Fragment;
@@ -20,10 +17,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class ChatFragment extends Fragment implements OnItemClickListener {
 	private Context context;
-	private ListView lvChat;
+	@Bind(R.id.lvChat) ListView lvChat;
 
 	public ChatFragment(Context context) {
 		this.context = context;
@@ -33,7 +32,7 @@ public class ChatFragment extends Fragment implements OnItemClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.chat_fragment, container, false);
-		lvChat = (ListView) view.findViewById(R.id.lvChat);
+		ButterKnife.bind(this, view);
 		lvChat.setAdapter(new ChatAdapter(context, getChatItems()));
 		lvChat.setOnItemClickListener(this);
 		return view;

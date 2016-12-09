@@ -3,6 +3,9 @@ package net.fai.daems.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 import net.fai.daems.ChatActivity;
 import net.fai.daems.R;
 import net.fai.daems.adapter.ContactAdapter;
@@ -25,8 +28,8 @@ import android.widget.ListView;
 
 public class ContactFragment extends Fragment implements OnClickListener, OnItemClickListener {
 	private Context context;
-	private ListView lvContact;
-	private Button btnSwitch;
+	@Bind(R.id.lvContact) ListView lvContact;
+	@Bind(R.id.btnSwitch) Button btnSwitch;
 
 	public ContactFragment(Context context) {
 		this.context = context;
@@ -36,9 +39,8 @@ public class ContactFragment extends Fragment implements OnClickListener, OnItem
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.contact_fragment, container, false);
-		btnSwitch = (Button) view.findViewById(R.id.btnSwitch);
+		ButterKnife.bind(this, view);
 		btnSwitch.setOnClickListener(this);
-		lvContact = (ListView) view.findViewById(R.id.lvContact);
 		lvContact.setAdapter(new ContactAdapter(context, getContactItems(0)));
 		lvContact.setOnItemClickListener(this);
 		return view;

@@ -1,5 +1,7 @@
 package net.fai.daems;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +13,8 @@ import android.widget.Toast;
 
 public class ContactAddActivity extends Activity implements OnClickListener {
 	
-	private Button btnAdd;
-	private EditText etInput;
+	@Bind(R.id.btnAdd) Button btnAdd;
+	@Bind(R.id.etInput) EditText etInput;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -21,9 +23,8 @@ public class ContactAddActivity extends Activity implements OnClickListener {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		// 将我们定义的窗口设置为默认视图
 		setContentView(R.layout.add_contact);
-		btnAdd = (Button) findViewById(R.id.btnAdd);
+		ButterKnife.bind(this);
 		btnAdd.setOnClickListener(this);
-		etInput = (EditText) findViewById(R.id.etInput);
 	}
 
 	@Override
