@@ -7,11 +7,17 @@ import java.util.Date;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import net.fai.daems.BindService.MyBinder;
 import net.fai.daems.adapter.ChatMsgViewAdpater;
 import net.fai.daems.adapter.item.ChatMsg;
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Message;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,7 +32,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ChatActivity extends Activity implements OnClickListener, OnTouchListener, OnItemClickListener, OnFocusChangeListener {
+public class ChatActivity extends Activity implements OnClickListener, OnTouchListener, OnItemClickListener, OnFocusChangeListener, DaemsMessageReceiver.EventHandler {
 	
 	@Bind(R.id.tvName) TextView tvName;
 	@Bind(R.id.btn_send) Button btnSend;
@@ -36,6 +42,22 @@ public class ChatActivity extends Activity implements OnClickListener, OnTouchLi
 	private InputMethodManager mInputMethodManager;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	private String name;
+	
+	private ServiceConnection conn = new ServiceConnection() {
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            // TODO Auto-generated method stub
+            
+        }
+        
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            // TODO Auto-generated method stub
+            MyBinder binder = (MyBinder)service;
+            BindService bindService = binder.getService();
+            bindService.MyMethod();
+        }
+    };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +74,27 @@ public class ChatActivity extends Activity implements OnClickListener, OnTouchLi
 		lvChatRecord.setOnTouchListener(this);
 		lvChatRecord.setAdapter(new ChatMsgViewAdpater(ChatActivity.this, new ArrayList<ChatMsg>()));
 		iBtnBack.setOnClickListener(this);
+		Intent i = new Intent(ChatActivity.this,BindService.class);
+        bindService(i, conn, Context.BIND_AUTO_CREATE);
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		unbindService(conn);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		DaemsMessageReceiver.ehList.add(this);
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		DaemsMessageReceiver.ehList.remove(this);
 	}
 
 	@Override
@@ -113,5 +156,11 @@ public class ChatActivity extends Activity implements OnClickListener, OnTouchLi
             break;
 		}
 		return false;
+	}
+
+	@Override
+	public void onMessage(Message message) {
+		this.tvName.setText(message.arg1 + "");
+		
 	}
 }

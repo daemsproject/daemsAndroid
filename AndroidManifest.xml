@@ -7,8 +7,14 @@
     <uses-sdk
         android:minSdkVersion="17"
         android:targetSdkVersion="23" />
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
+        android:name="net.fai.daems.app.DaemsApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -18,13 +24,21 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="net.fai.daems.ChatActivity" />
         <activity android:name="net.fai.daems.AccountActivity" />
         <activity android:name="net.fai.daems.ContactAddActivity" android:theme="@style/Theme.FloatActivity"/>
-    </application>
+        <service android:name="net.fai.daems.BindService"></service>
+        <service android:name="net.fai.daems.BoundaryReceiver"></service>
+        <receiver android:name=".DaemsMessageReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="net.fai.daems.message.in" />
+                <action android:name="net.fai.daems.service.destroy" />
+            </intent-filter>
+        </receiver>
 
+    </application>
 </manifest>

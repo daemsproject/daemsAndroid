@@ -1,15 +1,17 @@
 package net.fai.daems;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-import net.fai.daems.R;
+import net.fai.daems.BindService.MyBinder;
 import net.fai.daems.fragment.ChatFragment;
 import net.fai.daems.fragment.ContactFragment;
 import net.fai.daems.fragment.MeFragment;
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -17,6 +19,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class MainActivity extends Activity implements
 		RadioGroup.OnCheckedChangeListener {
@@ -29,6 +33,22 @@ public class MainActivity extends Activity implements
 	@Bind(R.id.rd_menu_chat) RadioButton rbChat;
 	@Bind(R.id.txt_topbar) TextView tvTopbar;
 	@Bind(R.id.btn_topbar) ImageButton btnTopbar;
+	
+	private ServiceConnection conn = new ServiceConnection() {
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            // TODO Auto-generated method stub
+            
+        }
+        
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            // TODO Auto-generated method stub
+            MyBinder binder = (MyBinder)service;
+            BindService bindService = binder.getService();
+            bindService.MyMethod();
+        }
+    };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +57,23 @@ public class MainActivity extends Activity implements
 		ButterKnife.bind(this);
 		rpTab.setOnCheckedChangeListener(this);
 		rbChat.setChecked(true);
+		Intent intent = new Intent(MainActivity.this,BindService.class);
+        bindService(intent, conn, Context.BIND_AUTO_CREATE);
+//        if (!BoundaryReceiver.isRunning) {
+//        	startService(new Intent(MainActivity.this, BoundaryReceiver.class));
+//        }
 	}
+	
+	
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		unbindService(conn);
+	}
+
+
 
 	public void hideAllFragment(FragmentTransaction transaction) {
 		if (chatFragment != null) {
@@ -109,5 +145,5 @@ public class MainActivity extends Activity implements
 	public void callback(String msg)  
     {  
         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
-    }    
+    }
 }
