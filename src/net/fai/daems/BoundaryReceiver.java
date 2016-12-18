@@ -13,13 +13,32 @@ public class BoundaryReceiver extends Service {
 	static {
 		System.loadLibrary("daems");
 	}
-
+	
 	public void onReceive(String msg) {
-		Intent intent = new Intent();
-		intent.setAction(Actions.MESSAGE_IN);
-		intent.putExtra("count", ++count);
-		intent.putExtra("msg", msg);
-		sendBroadcast(intent);
+//		Intent intent = new Intent();
+//		intent.setAction(Actions.MESSAGE_IN);
+//		intent.putExtra("count", ++count);
+//		intent.putExtra("msg", msg);
+//		sendBroadcast(intent);
+		Thread thread = new Thread() {
+			@Override
+			public void run() {
+				while (true) {
+					Intent intent = new Intent();
+					intent.setAction(Actions.MESSAGE_IN);
+					intent.putExtra("count", ++count);
+					intent.putExtra("msg", "定時任務發送的消息:" + count);
+					sendBroadcast(intent);
+					try {
+						Thread.sleep(10000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+		};
+		thread.start();
 	}
 
 	@Override

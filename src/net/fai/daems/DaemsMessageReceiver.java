@@ -9,6 +9,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Message;
 
 public class DaemsMessageReceiver extends BroadcastReceiver {
@@ -27,9 +28,9 @@ public class DaemsMessageReceiver extends BroadcastReceiver {
 		} else if (Actions.SERVICE_DESTROY.equals(action)) {
 			context.startService(new Intent(context, BoundaryReceiver.class));
 		} else if (Actions.MESSAGE_IN.equals(action)) {
+			int count = intent.getIntExtra("count", 0);
+			String content = intent.getStringExtra("msg");
 			if (ehList.isEmpty()) {
-				int count = intent.getIntExtra("count", 0);
-				String content = intent.getStringExtra("msg");
 				NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);  
 				PendingIntent pendingIntent3 = PendingIntent.getActivity(context, 0, new Intent(DaemsApplication.getInstance(), MainActivity.class), 0);
 	            Notification notify3 = new Notification.Builder(DaemsApplication.getInstance())  
@@ -40,6 +41,14 @@ public class DaemsMessageReceiver extends BroadcastReceiver {
 	                    .setContentIntent(pendingIntent3).setNumber(1).build();
 	            notify3.flags |= Notification.FLAG_AUTO_CANCEL; // FLAG_AUTO_CANCEL表明当通知被用户点击时，通知将被清除。  
 	            manager.notify(1, notify3);
+			} else {
+				for (EventHandler handler : ehList) {
+					Message msg = new Message();
+					Bundle data = new Bundle();
+					data.putString("content", content);
+					msg.setData(data);
+					handler.onMessage(msg);
+				}
 			}
 		}
 	}

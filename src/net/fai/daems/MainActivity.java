@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -23,7 +24,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainActivity extends Activity implements
-		RadioGroup.OnCheckedChangeListener {
+		RadioGroup.OnCheckedChangeListener, DaemsMessageReceiver.EventHandler {
 	
 	private ChatFragment chatFragment;
 	private ContactFragment contactFragment;
@@ -37,13 +38,11 @@ public class MainActivity extends Activity implements
 	private ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceDisconnected(ComponentName name) {
-            // TODO Auto-generated method stub
             
         }
         
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            // TODO Auto-generated method stub
             MyBinder binder = (MyBinder)service;
             BindService bindService = binder.getService();
             bindService.MyMethod();
@@ -59,12 +58,22 @@ public class MainActivity extends Activity implements
 		rbChat.setChecked(true);
 		Intent intent = new Intent(MainActivity.this,BindService.class);
         bindService(intent, conn, Context.BIND_AUTO_CREATE);
-//        if (!BoundaryReceiver.isRunning) {
-//        	startService(new Intent(MainActivity.this, BoundaryReceiver.class));
-//        }
+        if (!BoundaryReceiver.isRunning) {
+        	startService(new Intent(MainActivity.this, BoundaryReceiver.class));
+        }
+	}
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		DaemsMessageReceiver.ehList.remove(this);
 	}
 	
-	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		DaemsMessageReceiver.ehList.add(this);
+	}
 
 	@Override
 	protected void onDestroy() {
@@ -104,8 +113,7 @@ public class MainActivity extends Activity implements
 			}
 			break;
 		case R.id.rd_menu_contact:
-			tvTopbar.setText(NDKTestFromJNI());
-//			tvTopbar.setText(R.string.contact);
+			tvTopbar.setText(R.string.contact);
 			btnTopbar.setVisibility(View.VISIBLE);
 			btnTopbar.setOnClickListener(new OnClickListener() {
 				@Override
@@ -146,4 +154,10 @@ public class MainActivity extends Activity implements
     {  
         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
     }
+
+	@Override
+	public void onMessage(Message message) {
+		String content = String.valueOf(message.getData().get("content"));
+		tvTopbar.setText(String.valueOf(BoundaryReceiver.isRunning) + "," + content);
+	}
 }
