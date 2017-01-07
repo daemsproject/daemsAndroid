@@ -1,6 +1,5 @@
 package net.fai.daems;
 
-import net.fai.daems.BindService.MyBinder;
 import net.fai.daems.fragment.ChatFragment;
 import net.fai.daems.fragment.ContactFragment;
 import net.fai.daems.fragment.MeFragment;
@@ -35,20 +34,6 @@ public class MainActivity extends Activity implements
 	@Bind(R.id.txt_topbar) TextView tvTopbar;
 	@Bind(R.id.btn_topbar) ImageButton btnTopbar;
 	
-	private ServiceConnection conn = new ServiceConnection() {
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            
-        }
-        
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            MyBinder binder = (MyBinder)service;
-            BindService bindService = binder.getService();
-            bindService.MyMethod();
-        }
-    };
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,8 +41,6 @@ public class MainActivity extends Activity implements
 		ButterKnife.bind(this);
 		rpTab.setOnCheckedChangeListener(this);
 		rbChat.setChecked(true);
-		Intent intent = new Intent(MainActivity.this,BindService.class);
-        bindService(intent, conn, Context.BIND_AUTO_CREATE);
         if (!BoundaryReceiver.isRunning) {
         	startService(new Intent(MainActivity.this, BoundaryReceiver.class));
         }
@@ -79,7 +62,6 @@ public class MainActivity extends Activity implements
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		unbindService(conn);
 	}
 
 

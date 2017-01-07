@@ -7,7 +7,6 @@ import java.util.Date;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import net.fai.daems.BindService.MyBinder;
 import net.fai.daems.adapter.ChatMsgViewAdpater;
 import net.fai.daems.adapter.item.ChatMsg;
 import android.app.Activity;
@@ -43,22 +42,6 @@ public class ChatActivity extends Activity implements OnClickListener, OnTouchLi
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	private String name;
 	
-	private ServiceConnection conn = new ServiceConnection() {
-        @Override
-        public void onServiceDisconnected(ComponentName name) {
-            // TODO Auto-generated method stub
-            
-        }
-        
-        @Override
-        public void onServiceConnected(ComponentName name, IBinder service) {
-            // TODO Auto-generated method stub
-            MyBinder binder = (MyBinder)service;
-            BindService bindService = binder.getService();
-            bindService.MyMethod();
-        }
-    };
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -74,15 +57,12 @@ public class ChatActivity extends Activity implements OnClickListener, OnTouchLi
 		lvChatRecord.setOnTouchListener(this);
 		lvChatRecord.setAdapter(new ChatMsgViewAdpater(ChatActivity.this, new ArrayList<ChatMsg>()));
 		iBtnBack.setOnClickListener(this);
-		Intent i = new Intent(ChatActivity.this,BindService.class);
-        bindService(i, conn, Context.BIND_AUTO_CREATE);
 	}
 	
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		unbindService(conn);
 	}
 	
 	@Override

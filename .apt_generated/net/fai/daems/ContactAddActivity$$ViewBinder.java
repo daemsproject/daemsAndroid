@@ -8,14 +8,14 @@ import butterknife.ButterKnife.ViewBinder;
 public class ContactAddActivity$$ViewBinder<T extends net.fai.daems.ContactAddActivity> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131230737, "field 'etInput'");
-    target.etInput = finder.castView(view, 2131230737, "field 'etInput'");
     view = finder.findRequiredView(source, 2131230724, "field 'btnAdd'");
     target.btnAdd = finder.castView(view, 2131230724, "field 'btnAdd'");
+    view = finder.findRequiredView(source, 2131230737, "field 'etInput'");
+    target.etInput = finder.castView(view, 2131230737, "field 'etInput'");
   }
 
   @Override public void unbind(T target) {
-    target.etInput = null;
     target.btnAdd = null;
+    target.etInput = null;
   }
 }
