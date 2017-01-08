@@ -8,8 +8,8 @@ import butterknife.ButterKnife.ViewBinder;
 public class AccountActivity$$ViewBinder<T extends net.fai.daems.AccountActivity> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131230724, "field 'btnAdd' and method 'onClick'");
-    target.btnAdd = finder.castView(view, 2131230724, "field 'btnAdd'");
+    view = finder.findRequiredView(source, 2131230723, "field 'btnBack' and method 'onClick'");
+    target.btnBack = finder.castView(view, 2131230723, "field 'btnBack'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -18,8 +18,8 @@ public class AccountActivity$$ViewBinder<T extends net.fai.daems.AccountActivity
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131230723, "field 'btnBack' and method 'onClick'");
-    target.btnBack = finder.castView(view, 2131230723, "field 'btnBack'");
+    view = finder.findRequiredView(source, 2131230724, "field 'btnAdd' and method 'onClick'");
+    target.btnAdd = finder.castView(view, 2131230724, "field 'btnAdd'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -33,8 +33,8 @@ public class AccountActivity$$ViewBinder<T extends net.fai.daems.AccountActivity
   }
 
   @Override public void unbind(T target) {
-    target.btnAdd = null;
     target.btnBack = null;
+    target.btnAdd = null;
     target.lvAccount = null;
   }
 }

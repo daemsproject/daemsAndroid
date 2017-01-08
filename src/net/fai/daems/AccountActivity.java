@@ -7,12 +7,16 @@ import java.util.List;
 
 import net.fai.daems.adapter.AccountAdpater;
 import net.fai.daems.adapter.item.AccountItem;
+import net.fai.daems.app.DaemsApplication;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -29,7 +33,17 @@ public class AccountActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_account);
 		ButterKnife.bind(this);
-		lvAccount.setAdapter(new AccountAdpater(AccountActivity.this, getAccount()));
+		final AccountAdpater adapter = new AccountAdpater(AccountActivity.this, getAccount());
+		lvAccount.setAdapter(adapter);
+		lvAccount.setOnItemLongClickListener(new OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+					int position, long arg3) {
+				DaemsApplication.getInstance().copy(adapter.getItem(position).getKey());
+				Toast.makeText(AccountActivity.this, "账号已复制", Toast.LENGTH_SHORT).show();
+				return true;
+			}
+		});
 	}
 
 	@OnClick({R.id.btnAdd, R.id.ibtn_back})
