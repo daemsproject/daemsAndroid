@@ -46,12 +46,14 @@ public abstract class DaemsAdapter<E extends DaemsItem> extends BaseAdapter {
 		this.notifyDataSetChanged();
 	}
 	
-	public E popItem(int position) {
+	public E deleteItem(int position) {
 		if (position >= this.items.size()) {
 			// TODO add log
 			return null;
 		}
-		return this.items.remove(position);
+		E item = this.items.remove(position);
+		this.notifyDataSetChanged();
+		return item;
 	}
 	
 	@Override

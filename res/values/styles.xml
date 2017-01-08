@@ -59,6 +59,11 @@
 		<item name="android:textSize">15sp</item>      
 		<item name="android:gravity">center</item> 
 	</style>
+	
+	<style name="ActionSheetAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/push_up_in</item>
+        <item name="android:windowExitAnimation">@anim/push_up_out</item>
+    </style>
     
 
 </resources>
