@@ -3,15 +3,13 @@ package net.fai.daems.adapter;
 import java.util.List;
 
 import net.fai.daems.R;
-import net.fai.daems.adapter.item.ChatMsg;
+import net.fai.daems.adapter.item.ChatMsgItem;
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class ChatMsgViewAdpater extends BaseAdapter {
+public class ChatMsgViewAdpater extends DaemsAdapter<ChatMsgItem> {
 
 	// ListView视图的内容由IMsgViewType决定
 	public static interface IMsgViewType {
@@ -21,91 +19,19 @@ public class ChatMsgViewAdpater extends BaseAdapter {
 		int IMVT_TO_MSG = 1;
 	}
 
-	private static final String TAG = ChatMsgViewAdpater.class.getSimpleName();
-	private List<ChatMsg> data;
-	private Context context;
-	private LayoutInflater mInflater;
-
-	public ChatMsgViewAdpater(Context context, List<ChatMsg> data) {
-		this.context = context;
-		this.data = data;
-		mInflater = LayoutInflater.from(context);
-	}
-	
-	public void appendMsg(ChatMsg msg) {
-		data.add(msg);
-		this.notifyDataSetChanged();
-	}
-
-	// 获取ListView的项个数
-	public int getCount() {
-		return data.size();
-	}
-
-	// 获取项
-	public Object getItem(int position) {
-		return data.get(position);
-	}
-
-	// 获取项的ID
-	public long getItemId(int position) {
-		return position;
+	public ChatMsgViewAdpater(Context context, List<ChatMsgItem> items) {
+		super(context);
+		this.setItems(items);
 	}
 
 	// 获取项的类型
 	public int getItemViewType(int position) {
-		ChatMsg entity = data.get(position);
-
+		ChatMsgItem entity = this.getItem(position);
 		if (entity.getMsgType()) {
 			return IMsgViewType.IMVT_COM_MSG;
 		} else {
 			return IMsgViewType.IMVT_TO_MSG;
 		}
-
-	}
-
-	// 获取项的类型数
-	public int getViewTypeCount() {
-		// TODO Auto-generated method stub
-		return 2;
-	}
-
-	// 获取View
-	public View getView(int position, View convertView, ViewGroup parent) {
-
-		ChatMsg entity = data.get(position);
-		boolean isComMsg = entity.getMsgType();
-
-		ViewHolder viewHolder = null;
-		if (convertView == null) {
-			if (isComMsg) {
-				// 如果是对方发来的消息，则显示的是左气泡
-				convertView = mInflater.inflate(
-						R.layout.chatting_item_msg_text_left, null);
-			} else {
-				// 如果是自己发出的消息，则显示的是右气泡
-				convertView = mInflater.inflate(
-						R.layout.chatting_item_msg_text_right, null);
-			}
-
-			viewHolder = new ViewHolder();
-			viewHolder.tvSendTime = (TextView) convertView
-					.findViewById(R.id.tv_sendtime);
-			viewHolder.tvUserName = (TextView) convertView
-					.findViewById(R.id.tv_username);
-			viewHolder.tvContent = (TextView) convertView
-					.findViewById(R.id.tv_chatcontent);
-			viewHolder.isComMsg = isComMsg;
-
-			convertView.setTag(viewHolder);
-		} else {
-			viewHolder = (ViewHolder) convertView.getTag();
-		}
-		viewHolder.tvSendTime.setText(entity.getDate());
-		viewHolder.tvUserName.setText(entity.getName());
-		viewHolder.tvContent.setText(entity.getText());
-
-		return convertView;
 	}
 
 	// 通过ViewHolder显示项的内容
@@ -114,6 +40,43 @@ public class ChatMsgViewAdpater extends BaseAdapter {
 		public TextView tvUserName;
 		public TextView tvContent;
 		public boolean isComMsg = true;
+	}
+
+	@Override
+	public View getAdapterView(int position, View view, ViewGroup parent) {
+		ChatMsgItem entity = this.getItem(position);
+		boolean isComMsg = entity.getMsgType();
+
+		ViewHolder viewHolder = null;
+		if (view == null) {
+			if (isComMsg) {
+				// 如果是对方发来的消息，则显示的是左气泡
+				view = this.getInflater().inflate(
+						R.layout.chatting_item_msg_text_left, null);
+			} else {
+				// 如果是自己发出的消息，则显示的是右气泡
+				view = this.getInflater().inflate(
+						R.layout.chatting_item_msg_text_right, null);
+			}
+
+			viewHolder = new ViewHolder();
+			viewHolder.tvSendTime = (TextView) view
+					.findViewById(R.id.tv_sendtime);
+			viewHolder.tvUserName = (TextView) view
+					.findViewById(R.id.tv_username);
+			viewHolder.tvContent = (TextView) view
+					.findViewById(R.id.tv_chatcontent);
+			viewHolder.isComMsg = isComMsg;
+
+			view.setTag(viewHolder);
+		} else {
+			viewHolder = (ViewHolder) view.getTag();
+		}
+		viewHolder.tvSendTime.setText(entity.getDate());
+		viewHolder.tvUserName.setText(entity.getName());
+		viewHolder.tvContent.setText(entity.getText());
+
+		return view;
 	}
 
 }

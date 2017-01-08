@@ -4,18 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
 import net.fai.daems.adapter.ChatMsgViewAdpater;
-import net.fai.daems.adapter.item.ChatMsg;
+import net.fai.daems.adapter.item.ChatMsgItem;
 import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.os.Message;
 import android.view.MotionEvent;
 import android.view.View;
@@ -30,6 +23,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class ChatActivity extends Activity implements OnClickListener, OnTouchListener, OnItemClickListener, OnFocusChangeListener, DaemsMessageReceiver.EventHandler {
 	
@@ -55,7 +50,7 @@ public class ChatActivity extends Activity implements OnClickListener, OnTouchLi
 		lvChatRecord.setOnItemClickListener(this);
 		lvChatRecord.setOnFocusChangeListener(this);
 		lvChatRecord.setOnTouchListener(this);
-		lvChatRecord.setAdapter(new ChatMsgViewAdpater(ChatActivity.this, new ArrayList<ChatMsg>()));
+		lvChatRecord.setAdapter(new ChatMsgViewAdpater(ChatActivity.this, new ArrayList<ChatMsgItem>()));
 		iBtnBack.setOnClickListener(this);
 	}
 	
@@ -95,19 +90,19 @@ public class ChatActivity extends Activity implements OnClickListener, OnTouchLi
 	
 	
 	private void sendMessage(String text) {
-		ChatMsg msg1 = new ChatMsg();
+		ChatMsgItem msg1 = new ChatMsgItem();
 		msg1.setName("我");
 		msg1.setDate(sdf.format(new Date()));
 		msg1.setMsgType(false);
 		msg1.setText(text);
-		((ChatMsgViewAdpater)lvChatRecord.getAdapter()).appendMsg(msg1);
+		((ChatMsgViewAdpater)lvChatRecord.getAdapter()).appendItem(msg1);
 		
-		ChatMsg msg2 = new ChatMsg();
+		ChatMsgItem msg2 = new ChatMsgItem();
 		msg2.setName(name);
 		msg2.setDate(sdf.format(new Date()));
 		msg2.setMsgType(true);
 		msg2.setText("哈哈");
-		((ChatMsgViewAdpater)lvChatRecord.getAdapter()).appendMsg(msg2);
+		((ChatMsgViewAdpater)lvChatRecord.getAdapter()).appendItem(msg2);
 		
 		lvChatRecord.setSelection(lvChatRecord.getCount() - 1);
 	}

@@ -3,13 +3,9 @@ package net.fai.daems.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
 import net.fai.daems.ChatActivity;
 import net.fai.daems.R;
 import net.fai.daems.adapter.ContactAdapter;
-import net.fai.daems.adapter.item.ChatItem;
 import net.fai.daems.adapter.item.ContactItem;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -25,6 +21,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 public class ContactFragment extends Fragment implements OnClickListener, OnItemClickListener {
 	private Context context;
@@ -64,7 +62,7 @@ public class ContactFragment extends Fragment implements OnClickListener, OnItem
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					ContactAdapter adapter = (ContactAdapter)lvContact.getAdapter();
-					adapter.setData(getContactItems(which));
+					adapter.setItems(getContactItems(which));
 					adapter.notifyDataSetChanged();
 				}
 			}).create();

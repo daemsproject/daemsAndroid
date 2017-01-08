@@ -1,6 +1,6 @@
 package net.fai.daems.adapter.item;
 
-public class ChatItem {
+public class ChatItem extends DaemsItem  {
 	
 	public int imageId;
 	public String name;

@@ -3,6 +3,7 @@ package net.fai.daems;
 import java.util.ArrayList;
 
 import net.fai.daems.app.DaemsApplication;
+import net.fai.daems.constant.Daems;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -23,11 +24,11 @@ public class DaemsMessageReceiver extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		String action = intent.getAction();
-		if (Actions.BOOT_COMPLETED.equals(action)) {
+		if (Daems.Action.BOOT_COMPLETED.equals(action)) {
 			context.startService(new Intent(context, BoundaryReceiver.class));
-		} else if (Actions.SERVICE_DESTROY.equals(action)) {
+		} else if (Daems.Action.SERVICE_DESTROY.equals(action)) {
 			context.startService(new Intent(context, BoundaryReceiver.class));
-		} else if (Actions.MESSAGE_IN.equals(action)) {
+		} else if (Daems.Action.MESSAGE_IN.equals(action)) {
 			int count = intent.getIntExtra("count", 0);
 			String content = intent.getStringExtra("msg");
 			if (ehList.isEmpty()) {

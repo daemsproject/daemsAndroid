@@ -1,6 +1,6 @@
 package net.fai.daems.adapter.item;
 
-public class ChatMsg {
+public class ChatMsgItem extends DaemsItem {
 	//名字  
     private String name;  
     //日期  
@@ -42,10 +42,10 @@ public class ChatMsg {
         this.isComMsg = isComMsg;  
     }  
   
-    public ChatMsg() {  
+    public ChatMsgItem() {  
     }  
   
-    public ChatMsg(String name, String date, String text, boolean isComMsg) {  
+    public ChatMsgItem(String name, String date, String text, boolean isComMsg) {  
         this.name = name;  
         this.date = date;  
         this.text = text;  

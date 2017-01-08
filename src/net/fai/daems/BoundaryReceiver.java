@@ -1,5 +1,6 @@
 package net.fai.daems;
 
+import net.fai.daems.constant.Daems;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -16,7 +17,7 @@ public class BoundaryReceiver extends Service {
 	
 	public void onReceive(String msg) {
 		Intent intent = new Intent();
-		intent.setAction(Actions.MESSAGE_IN);
+		intent.setAction(Daems.Action.MESSAGE_IN);
 		intent.putExtra("count", ++count);
 		intent.putExtra("msg", msg);
 		sendBroadcast(intent);
@@ -60,7 +61,7 @@ public class BoundaryReceiver extends Service {
 		super.onDestroy();
 		isRunning = false;
 		Intent intent = new Intent();
-		intent.setAction(Actions.SERVICE_DESTROY);
+		intent.setAction(Daems.Action.SERVICE_DESTROY);
 		sendBroadcast(intent);
 	}
 

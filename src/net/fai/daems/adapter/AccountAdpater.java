@@ -3,54 +3,35 @@ package net.fai.daems.adapter;
 import java.util.List;
 
 import net.fai.daems.R;
-import net.fai.daems.adapter.item.Account;
+import net.fai.daems.adapter.item.AccountItem;
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-public class AccountAdpater extends BaseAdapter {
+public class AccountAdpater extends DaemsAdapter<AccountItem>  {
 
-	private static final String TAG = AccountAdpater.class.getSimpleName();
-	private List<Account> data;
-	private Context context;
-	private LayoutInflater mInflater;
-
-	public AccountAdpater(Context context, List<Account> data) {
-		this.context = context;
-		this.data = data;
-		mInflater = LayoutInflater.from(context);
+	public AccountAdpater(Context context, List<AccountItem> items) {
+		super(context);
+		this.setItems(items);
 	}
 	
-	public void appendAccount(Account account) {
-		data.add(account);
-		this.notifyDataSetChanged();
+	static class ViewHolder {
+		public TextView name;
+		public TextView date;
 	}
 
-	// 获取ListView的项个数
-	public int getCount() {
-		return data.size();
-	}
-
-	// 获取项
-	public Object getItem(int position) {
-		return data.get(position);
-	}
-
-	// 获取项的ID
-	public long getItemId(int position) {
-		return position;
-	}
-
-	// 获取View
-	public View getView(int position, View view, ViewGroup parent) {
-		Account entity = data.get(position);
+	@Override
+	public View getAdapterView(int position, View view, ViewGroup parent) {
+		AccountItem entity = this.getItem(position);
+		if (entity == null) {
+			// TODO 异常处理
+			entity = new AccountItem("error", "error");
+		}
 		ViewHolder viewHolder;
 		if (view == null) {
 			viewHolder = new ViewHolder();
-			view = mInflater.inflate(R.layout.account_item, parent, false);
+			view = this.getInflater().inflate(R.layout.account_item, parent, false);
 			viewHolder.name = (TextView) view.findViewById(R.id.tvName);
 			viewHolder.date = (TextView) view.findViewById(R.id.tvDate);
 			view.setTag(viewHolder);
@@ -59,13 +40,7 @@ public class AccountAdpater extends BaseAdapter {
 		}
 		viewHolder.name.setText(entity.getAbbr());
 		viewHolder.date.setText(entity.getDate());
-
 		return view;
-	}
-
-	static class ViewHolder {
-		public TextView name;
-		public TextView date;
 	}
 
 }

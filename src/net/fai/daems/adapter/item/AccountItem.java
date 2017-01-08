@@ -1,11 +1,11 @@
 package net.fai.daems.adapter.item;
 
-public class Account {
+public class AccountItem extends DaemsItem {
 	private String key;
 	private String date;
 	private String abbr;
 
-	public Account(String key, String date) {
+	public AccountItem(String key, String date) {
 		this.key = key;
 		this.date = date;
 		this.abbr = key.length() > 5 ? key.substring(0, 5) : key;
