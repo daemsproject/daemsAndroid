@@ -8,6 +8,8 @@ import butterknife.ButterKnife.ViewBinder;
 public class AccountActivity$$ViewBinder<T extends net.fai.daems.AccountActivity> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
+    view = finder.findRequiredView(source, 2131230725, "field 'lvAccount'");
+    target.lvAccount = finder.castView(view, 2131230725, "field 'lvAccount'");
     view = finder.findRequiredView(source, 2131230723, "field 'btnBack' and method 'onClick'");
     target.btnBack = finder.castView(view, 2131230723, "field 'btnBack'");
     view.setOnClickListener(
@@ -28,13 +30,11 @@ public class AccountActivity$$ViewBinder<T extends net.fai.daems.AccountActivity
           target.onClick(p0);
         }
       });
-    view = finder.findRequiredView(source, 2131230725, "field 'lvAccount'");
-    target.lvAccount = finder.castView(view, 2131230725, "field 'lvAccount'");
   }
 
   @Override public void unbind(T target) {
+    target.lvAccount = null;
     target.btnBack = null;
     target.btnAdd = null;
-    target.lvAccount = null;
   }
 }

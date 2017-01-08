@@ -5,7 +5,7 @@
     <color name="blue">#0000ff</color>
     <color name="trans_blue">#7f4A708B</color>
     <color name="tras_black">#7f000000</color>
-    <color name="background">#F7F7F7</color>
+    <color name="background">#9370DB</color>
 
     <!-- 透明 -->
     <color name="transparent">#00000000</color>

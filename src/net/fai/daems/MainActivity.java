@@ -3,17 +3,17 @@ package net.fai.daems;
 import net.fai.daems.fragment.ChatFragment;
 import net.fai.daems.fragment.ContactFragment;
 import net.fai.daems.fragment.MeFragment;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.FragmentTransaction;
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 public class MainActivity extends Activity implements
 		RadioGroup.OnCheckedChangeListener, DaemsMessageReceiver.EventHandler {
@@ -39,6 +41,7 @@ public class MainActivity extends Activity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		ButterKnife.bind(this);
+		initSystemBar(this);
 		rpTab.setOnCheckedChangeListener(this);
 		rbChat.setChecked(true);
         if (!BoundaryReceiver.isRunning) {
@@ -141,5 +144,30 @@ public class MainActivity extends Activity implements
 	public void onMessage(Message message) {
 		String content = String.valueOf(message.getData().get("content"));
 		tvTopbar.setText(String.valueOf(BoundaryReceiver.isRunning) + "," + content);
+	}
+	
+
+	public static void initSystemBar(Activity activity) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+			setTranslucentStatus(activity, true);
+		}
+		SystemBarTintManager tintManager = new SystemBarTintManager(activity);
+		tintManager.setStatusBarTintEnabled(true);
+		// 使用颜色资源
+		tintManager.setStatusBarTintResource(R.color.background);
+
+	}
+
+	@TargetApi(19)
+	private static void setTranslucentStatus(Activity activity, boolean on) {
+		Window win = activity.getWindow();
+		WindowManager.LayoutParams winParams = win.getAttributes();
+		final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+		if (on) {
+			winParams.flags |= bits;
+		} else {
+			winParams.flags &= ~bits;
+		}
+		win.setAttributes(winParams);
 	}
 }
