@@ -29,6 +29,7 @@
         </activity>
         <activity android:name="net.fai.daems.ChatActivity" />
         <activity android:name="net.fai.daems.AccountActivity" />
+        <activity android:name="net.fai.daems.WalletActivity" />
         <activity android:name="net.fai.daems.ContactAddActivity" android:theme="@style/Theme.FloatActivity"/>
         <service android:name="net.fai.daems.BindService"></service>
         <service android:name="net.fai.daems.BoundaryReceiver"></service>

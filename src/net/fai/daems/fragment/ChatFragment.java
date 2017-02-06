@@ -17,12 +17,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 public class ChatFragment extends Fragment implements OnItemClickListener {
 	private Context context;
-	@Bind(R.id.lvChat) ListView lvChat;
+	ListView lvChat;
 
 	public ChatFragment(Context context) {
 		this.context = context;
@@ -32,7 +30,7 @@ public class ChatFragment extends Fragment implements OnItemClickListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.chat_fragment, container, false);
-		ButterKnife.bind(this, view);
+		lvChat = (ListView) view.findViewById(R.id.lvChat);
 		lvChat.setAdapter(new ChatAdapter(context, getChatItems()));
 		lvChat.setOnItemClickListener(this);
 		return view;

@@ -19,8 +19,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
@@ -31,16 +29,19 @@ public class MainActivity extends Activity implements
 	private ContactFragment contactFragment;
 	private MeFragment myFragment;
 
-	@Bind(R.id.rd_group) RadioGroup rpTab;
-	@Bind(R.id.rd_menu_chat) RadioButton rbChat;
-	@Bind(R.id.txt_topbar) TextView tvTopbar;
-	@Bind(R.id.btn_topbar) ImageButton btnTopbar;
+	RadioGroup rpTab;
+	RadioButton rbChat;
+	TextView tvTopbar;
+	ImageButton btnTopbar;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		ButterKnife.bind(this);
+		rpTab = (RadioGroup) findViewById(R.id.rd_group);
+		rbChat = (RadioButton) findViewById(R.id.rd_menu_chat);
+		tvTopbar = (TextView) findViewById(R.id.txt_topbar);
+		btnTopbar = (ImageButton) findViewById(R.id.btn_topbar);
 		initSystemBar(this);
 		rpTab.setOnCheckedChangeListener(this);
 		rbChat.setChecked(true);

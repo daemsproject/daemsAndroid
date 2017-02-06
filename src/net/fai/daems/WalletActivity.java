@@ -18,15 +18,18 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class AccountActivity extends Activity implements OnActionSheetSelected, OnCancelListener, OnClickListener {
+/**
+ * 钱包Activity
+ * @author Administrator
+ *
+ */
+public class WalletActivity extends Activity implements OnActionSheetSelected, OnCancelListener, OnClickListener {
 	
 	Button btnAdd;
-	ImageButton btnBack;
-	ListView lvAccount;
+	Button btnBack;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	private int copyedPosition = -1;
 	private  AccountAdpater adapter;
@@ -34,25 +37,22 @@ public class AccountActivity extends Activity implements OnActionSheetSelected, 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_account);
-		btnAdd = (Button) this.findViewById(R.id.btnAdd);
-		btnAdd.setOnClickListener(this);
-		btnBack = (ImageButton) this.findViewById(R.id.ibtn_back);
+		setContentView(R.layout.activity_wallet);
+		btnAdd = (Button) findViewById(R.id.btnAdd);
+		btnBack = (Button) findViewById(R.id.btn_back);
 		btnBack.setOnClickListener(this);
-		lvAccount = (ListView) this.findViewById(R.id.lvAccount);
-		adapter = new AccountAdpater(AccountActivity.this, getAccount());
-		lvAccount.setAdapter(adapter);
-		lvAccount.setOnItemLongClickListener(new OnItemLongClickListener() {
-			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-					int position, long arg3) {
-				copyedPosition = position;
-				ActionSheet.showSheet(AccountActivity.this, AccountActivity.this, AccountActivity.this);
-				return true;
-			}
-		});
+		adapter = new AccountAdpater(WalletActivity.this, getAccount());
 	}
 
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.btn_back:
+			this.finish();
+			break;
+			default:
+		}
+	}
+	
 	private List<AccountItem> getAccount() {
 		List<AccountItem> accounts = new ArrayList<AccountItem>();
 		accounts.add(new AccountItem("c380c8e6a0c8acda2381d4c9465acff8ec203ce6", sdf.format(new Date())));
@@ -74,7 +74,7 @@ public class AccountActivity extends Activity implements OnActionSheetSelected, 
 		switch (whichButton) {
 		case R.id.action_copy:
 			DaemsApplication.getInstance().copy(adapter.getItem(copyedPosition).getKey());
-			Toast.makeText(AccountActivity.this, "账号已复制", Toast.LENGTH_SHORT).show();
+			Toast.makeText(WalletActivity.this, "账号已复制", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.action_delete:
 			adapter.deleteItem(copyedPosition);
@@ -83,19 +83,5 @@ public class AccountActivity extends Activity implements OnActionSheetSelected, 
 			break;
 		
 		}
-	}
-
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.btnAdd:
-			((AccountAdpater) lvAccount.getAdapter()).appendItem(new AccountItem("c380c8e6a0c8acda2381d4c9465acff8ec203ce6", sdf.format(new Date())));
-			break;
-		case R.id.ibtn_back:
-			this.finish();
-			break;
-			default:
-		}
-		
 	}
 }

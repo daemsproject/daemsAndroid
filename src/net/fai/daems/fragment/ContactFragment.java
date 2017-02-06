@@ -21,13 +21,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 public class ContactFragment extends Fragment implements OnClickListener, OnItemClickListener {
 	private Context context;
-	@Bind(R.id.lvContact) ListView lvContact;
-	@Bind(R.id.btnSwitch) Button btnSwitch;
+	ListView lvContact;
+	Button btnSwitch;
 
 	public ContactFragment(Context context) {
 		this.context = context;
@@ -37,7 +35,8 @@ public class ContactFragment extends Fragment implements OnClickListener, OnItem
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.contact_fragment, container, false);
-		ButterKnife.bind(this, view);
+		lvContact = (ListView) view.findViewById(R.id.lvContact);
+		btnSwitch = (Button) view.findViewById(R.id.btnSwitch);
 		btnSwitch.setOnClickListener(this);
 		lvContact.setAdapter(new ContactAdapter(context, getContactItems(0)));
 		lvContact.setOnItemClickListener(this);

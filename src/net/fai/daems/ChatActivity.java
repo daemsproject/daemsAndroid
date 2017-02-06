@@ -23,16 +23,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 public class ChatActivity extends Activity implements OnClickListener, OnTouchListener, OnItemClickListener, OnFocusChangeListener, DaemsMessageReceiver.EventHandler {
 	
-	@Bind(R.id.tvName) TextView tvName;
-	@Bind(R.id.btn_send) Button btnSend;
-	@Bind(R.id.ibtn_back) ImageButton iBtnBack;
-	@Bind(R.id.etInput) EditText etInput;
-	@Bind(R.id.lvChatRecord) ListView lvChatRecord;
+	TextView tvName;
+	Button btnSend;
+	ImageButton iBtnBack;
+	EditText etInput;
+	ListView lvChatRecord;
 	private InputMethodManager mInputMethodManager;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	private String name;
@@ -41,7 +39,11 @@ public class ChatActivity extends Activity implements OnClickListener, OnTouchLi
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.chat);
-		ButterKnife.bind(this);
+		tvName = (TextView)findViewById(R.id.tvName);
+		btnSend = (Button)findViewById(R.id.btn_send);
+		iBtnBack = (ImageButton)findViewById(R.id.ibtn_back);
+		etInput = (EditText)findViewById(R.id.etInput);
+		lvChatRecord = (ListView)findViewById(R.id.lvChatRecord);
 		mInputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 		Intent intent = getIntent();
 		name = intent.getStringExtra("name");
