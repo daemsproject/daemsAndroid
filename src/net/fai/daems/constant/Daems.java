@@ -7,5 +7,9 @@ public class Daems {
 		public final static String MESSAGE_IN = "net.fai.daems.message.in";
 		public final static String SERVICE_DESTROY = "net.fai.daems.service.destroy";
 	}
+	
+	public static class View {
+		public final static int NONE_VIEW = -1;
+	}
 
 }

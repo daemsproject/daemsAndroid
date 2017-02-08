@@ -1,55 +1,51 @@
 package net.fai.daems;
 
+import net.fai.daems.constant.ViewId;
 import net.fai.daems.fragment.ChatFragment;
 import net.fai.daems.fragment.ContactFragment;
 import net.fai.daems.fragment.MeFragment;
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.readystatesoftware.systembartint.SystemBarTintManager;
-
-public class MainActivity extends Activity implements
+public class MainActivity extends DaemsActivity implements
 		RadioGroup.OnCheckedChangeListener, DaemsMessageReceiver.EventHandler {
 	
 	private ChatFragment chatFragment;
 	private ContactFragment contactFragment;
 	private MeFragment myFragment;
 
+	@ViewId(R.id.rd_group)
 	RadioGroup rpTab;
+	@ViewId(R.id.rd_menu_chat)
 	RadioButton rbChat;
+	@ViewId(R.id.txt_topbar)
 	TextView tvTopbar;
+	@ViewId(R.id.btn_topbar)
 	ImageButton btnTopbar;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		rpTab = (RadioGroup) findViewById(R.id.rd_group);
-		rbChat = (RadioButton) findViewById(R.id.rd_menu_chat);
-		tvTopbar = (TextView) findViewById(R.id.txt_topbar);
-		btnTopbar = (ImageButton) findViewById(R.id.btn_topbar);
-		initSystemBar(this);
+	public int getContentView() {
+		return R.layout.activity_main;
+	}
+
+	@Override
+	public void onCreateActivity(Bundle savedInstanceState) {
 		rpTab.setOnCheckedChangeListener(this);
 		rbChat.setChecked(true);
         if (!BoundaryReceiver.isRunning) {
         	startService(new Intent(MainActivity.this, BoundaryReceiver.class));
         }
 	}
-
+	
 	@Override
 	protected void onPause() {
 		super.onPause();
@@ -64,12 +60,9 @@ public class MainActivity extends Activity implements
 
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 	}
-
-
-
+	
 	public void hideAllFragment(FragmentTransaction transaction) {
 		if (chatFragment != null) {
 			transaction.hide(chatFragment);
@@ -145,30 +138,5 @@ public class MainActivity extends Activity implements
 	public void onMessage(Message message) {
 		String content = String.valueOf(message.getData().get("content"));
 		tvTopbar.setText(String.valueOf(BoundaryReceiver.isRunning) + "," + content);
-	}
-	
-
-	public static void initSystemBar(Activity activity) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-			setTranslucentStatus(activity, true);
-		}
-		SystemBarTintManager tintManager = new SystemBarTintManager(activity);
-		tintManager.setStatusBarTintEnabled(true);
-		// 使用颜色资源
-		tintManager.setStatusBarTintResource(R.color.background);
-
-	}
-
-	@TargetApi(19)
-	private static void setTranslucentStatus(Activity activity, boolean on) {
-		Window win = activity.getWindow();
-		WindowManager.LayoutParams winParams = win.getAttributes();
-		final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-		if (on) {
-			winParams.flags |= bits;
-		} else {
-			winParams.flags &= ~bits;
-		}
-		win.setAttributes(winParams);
 	}
 }

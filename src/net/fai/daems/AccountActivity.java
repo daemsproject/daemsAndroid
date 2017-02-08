@@ -9,7 +9,7 @@ import net.fai.daems.ActionSheet.OnActionSheetSelected;
 import net.fai.daems.adapter.AccountAdpater;
 import net.fai.daems.adapter.item.AccountItem;
 import net.fai.daems.app.DaemsApplication;
-import android.app.Activity;
+import net.fai.daems.constant.ViewId;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
@@ -22,24 +22,27 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class AccountActivity extends Activity implements OnActionSheetSelected, OnCancelListener, OnClickListener {
+public class AccountActivity extends DaemsActivity implements OnActionSheetSelected, OnCancelListener, OnClickListener {
 	
+	@ViewId(R.id.btnAdd)
 	Button btnAdd;
+	@ViewId(R.id.ibtn_back)
 	ImageButton btnBack;
+	@ViewId(R.id.lvAccount)
 	ListView lvAccount;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	private int copyedPosition = -1;
 	private  AccountAdpater adapter;
+	
+	@Override
+	public int getContentView() {
+		return R.layout.activity_account;
+	}
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_account);
-		btnAdd = (Button) this.findViewById(R.id.btnAdd);
+	public void onCreateActivity(Bundle savedInstanceState) {
 		btnAdd.setOnClickListener(this);
-		btnBack = (ImageButton) this.findViewById(R.id.ibtn_back);
 		btnBack.setOnClickListener(this);
-		lvAccount = (ListView) this.findViewById(R.id.lvAccount);
 		adapter = new AccountAdpater(AccountActivity.this, getAccount());
 		lvAccount.setAdapter(adapter);
 		lvAccount.setOnItemLongClickListener(new OnItemLongClickListener() {

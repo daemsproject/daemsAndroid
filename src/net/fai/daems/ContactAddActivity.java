@@ -1,6 +1,6 @@
 package net.fai.daems;
 
-import android.app.Activity;
+import net.fai.daems.constant.ViewId;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -9,20 +9,30 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ContactAddActivity extends Activity implements OnClickListener {
+public class ContactAddActivity extends DaemsActivity implements OnClickListener {
 	
+	@ViewId(R.id.btnAdd)
 	Button btnAdd;
+	@ViewId(R.id.etInput)
 	EditText etInput;
+	
+	@Override
+	public int getContentView() {
+		return R.layout.add_contact;
+	}
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		// 先去除应用程序标题栏 注意：一定要在setContentView之前
+	public void beforeSetContentView() {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		// 将我们定义的窗口设置为默认视图
-		setContentView(R.layout.add_contact);
-		btnAdd = (Button) findViewById(R.id.btnAdd);
-		etInput = (EditText) findViewById(R.id.etInput);
+	}
+
+	@Override
+	public boolean isTintSystgemBar() {
+		return false;
+	}
+
+	@Override
+	public void onCreateActivity(Bundle savedInstanceState) {
 		btnAdd.setOnClickListener(this);
 	}
 
@@ -51,8 +61,4 @@ public class ContactAddActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onRestart();
 	}
-	
-	
-	
-	
 }

@@ -6,7 +6,7 @@ import java.util.Date;
 
 import net.fai.daems.adapter.ChatMsgViewAdpater;
 import net.fai.daems.adapter.item.ChatMsgItem;
-import android.app.Activity;
+import net.fai.daems.constant.ViewId;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
@@ -24,26 +24,30 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ChatActivity extends Activity implements OnClickListener, OnTouchListener, OnItemClickListener, OnFocusChangeListener, DaemsMessageReceiver.EventHandler {
+public class ChatActivity extends DaemsActivity implements OnClickListener, OnTouchListener, OnItemClickListener, OnFocusChangeListener, DaemsMessageReceiver.EventHandler {
 	
+	@ViewId(R.id.tvName)
 	TextView tvName;
+	@ViewId(R.id.btn_send)
 	Button btnSend;
+	@ViewId(R.id.ibtn_back)
 	ImageButton iBtnBack;
+	@ViewId(R.id.etInput)
 	EditText etInput;
+	@ViewId(R.id.lvChatRecord)
 	ListView lvChatRecord;
+	
 	private InputMethodManager mInputMethodManager;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	private String name;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.chat);
-		tvName = (TextView)findViewById(R.id.tvName);
-		btnSend = (Button)findViewById(R.id.btn_send);
-		iBtnBack = (ImageButton)findViewById(R.id.ibtn_back);
-		etInput = (EditText)findViewById(R.id.etInput);
-		lvChatRecord = (ListView)findViewById(R.id.lvChatRecord);
+	public int getContentView() {
+		return R.layout.chat;
+	}
+
+	@Override
+	public void onCreateActivity(Bundle savedInstanceState) {
 		mInputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
 		Intent intent = getIntent();
 		name = intent.getStringExtra("name");
@@ -58,7 +62,6 @@ public class ChatActivity extends Activity implements OnClickListener, OnTouchLi
 	
 	@Override
 	protected void onDestroy() {
-		// TODO Auto-generated method stub
 		super.onDestroy();
 	}
 	
