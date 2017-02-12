@@ -1,5 +1,6 @@
 package net.fai.daems;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,10 +9,15 @@ import java.util.List;
 import net.fai.daems.adapter.TransAdapter;
 import net.fai.daems.adapter.item.TransItem;
 import net.fai.daems.constant.ViewId;
+import net.fai.daems.utils.DipPxUtils;
+import net.fai.daems.utils.QRCodeUtil;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 /**
@@ -25,8 +31,11 @@ public class ChatCoinDetailActivity extends DaemsActivity implements OnClickList
 	Button btnBack;
 	@ViewId(R.id.btnChatCoinSend)
 	Button btnChatCoinSend;
+	@ViewId(R.id.imgQRCode)
+	ImageView imgQRCode;
 	@ViewId(R.id.chatCoinTrans)
 	ListView chatCoinTrans;
+	
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	private int copyedPosition = -1;
@@ -41,6 +50,18 @@ public class ChatCoinDetailActivity extends DaemsActivity implements OnClickList
 	public void onCreateActivity(Bundle savedInstanceState) {
 		adapter = new TransAdapter(ChatCoinDetailActivity.this, getTrans());
 		chatCoinTrans.setAdapter(adapter);
+		
+		final String filePath = QRCodeUtil.getFileRoot(ChatCoinDetailActivity.this) + File.separator
+                + "qr_" + System.currentTimeMillis() + ".jpg";
+		
+		final int edgeWidth = DipPxUtils.dip2px(this, 100f);
+
+		boolean success = QRCodeUtil.createQRImage("1DQe9F3agsDcr4qoTZ3Sush4e88Nv9tNxa", edgeWidth, edgeWidth,
+                BitmapFactory.decodeResource(getResources(), R.mipmap.ic_menu_chat_off), filePath);
+
+        if (success) {
+        	imgQRCode.setImageBitmap(BitmapFactory.decodeFile(filePath));
+        }
 	}
 
 	public void onClick(View v) {
