@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/lightgrey"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -100,7 +100,17 @@
             android:textColor="@color/coin_detail_button_text"
             android:textSize="18sp" />
     </RelativeLayout>
-    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textSize="12sp"
+        android:layout_marginLeft="6dp"
+        android:background="@color/lightgrey"
+        android:textColor="@color/coin_detail_charactor"
+        android:layout_gravity="left"
+        android:gravity="center"
+        android:text="@string/trans"
+        />
     <ListView
         android:id="@+id/chatCoinTrans"
         android:layout_width="match_parent"

@@ -10,6 +10,7 @@
     <color name="coin_detail_background">#7295F4</color>
     <color name="coin_detail_button_bg">#C7D5FB</color>
     <color name="coin_detail_button_text">#585784</color>
+    <color name="coin_detail_charactor">#A9A5B1</color>
     
 
     <!-- 透明 -->
@@ -21,7 +22,7 @@
     <!-- 灰色背景 -->
     <color name="greybackground">#F0EFF5</color>
     <!-- 浅灰色 -->
-    <color name="lightgrey">#C4C4C4</color>
+    <color name="lightgrey">#EFEFF4</color>
     <!-- 灰色 -->
     <color name="grey">#999999</color>
     <!-- 深灰色 -->
