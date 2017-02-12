@@ -55,6 +55,11 @@ public class AccountActivity extends DaemsActivity implements OnActionSheetSelec
 			}
 		});
 	}
+	
+	@Override
+	public void onDestroyActivity() {
+		
+	}
 
 	private List<AccountItem> getAccount() {
 		List<AccountItem> accounts = new ArrayList<AccountItem>();
@@ -99,6 +104,6 @@ public class AccountActivity extends DaemsActivity implements OnActionSheetSelec
 			break;
 			default:
 		}
-		
 	}
+	
 }

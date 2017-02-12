@@ -8,7 +8,6 @@ import net.fai.daems.R;
 import net.fai.daems.WalletActivity;
 import net.fai.daems.adapter.MeAdapter;
 import net.fai.daems.adapter.item.MeItem;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,12 +18,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-public class MeFragment extends Fragment implements OnItemClickListener {
-	private Context context;
+public class MeFragment extends DaemsFragment implements OnItemClickListener {
 	ListView lvMe;
 
 	public MeFragment(Context context) {
-		this.context = context;
+		super(context);
 	}
 
 	@Override
@@ -54,6 +52,5 @@ public class MeFragment extends Fragment implements OnItemClickListener {
 			Intent intent = new Intent(context, WalletActivity.class);
 			startActivity(intent);
 		}
-		
 	}
 }

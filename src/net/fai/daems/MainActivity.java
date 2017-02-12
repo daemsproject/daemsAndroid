@@ -1,13 +1,17 @@
 package net.fai.daems;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import net.fai.daems.constant.ViewId;
 import net.fai.daems.fragment.ChatFragment;
 import net.fai.daems.fragment.ContactFragment;
 import net.fai.daems.fragment.MeFragment;
+import net.fai.daems.message.ChatMessage;
+import net.fai.daems.message.DaemsMessage;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -16,8 +20,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends DaemsActivity implements
-		RadioGroup.OnCheckedChangeListener, DaemsMessageReceiver.EventHandler {
+public class MainActivity extends MessageListenActivity implements
+		RadioGroup.OnCheckedChangeListener {
 	
 	private ChatFragment chatFragment;
 	private ContactFragment contactFragment;
@@ -49,18 +53,11 @@ public class MainActivity extends DaemsActivity implements
 	@Override
 	protected void onPause() {
 		super.onPause();
-		DaemsMessageReceiver.ehList.remove(this);
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
-		DaemsMessageReceiver.ehList.add(this);
-	}
-
-	@Override
-	protected void onDestroy() {
-		super.onDestroy();
 	}
 	
 	public void hideAllFragment(FragmentTransaction transaction) {
@@ -123,6 +120,14 @@ public class MainActivity extends DaemsActivity implements
 		transaction.commit();
 	}
 	
+	@Subscribe(threadMode = ThreadMode.MAIN)
+	public void onMessage(DaemsMessage message) {
+		String content = String.valueOf(((ChatMessage) message.getPayload()).getData());
+		tvTopbar.setText(String.valueOf(BoundaryReceiver.isRunning) + "," + content);
+	}
+	
+	/** NDK Demo Below **/
+	
 	public native String NDKTestFromJNI();
 	
 	static {
@@ -133,10 +138,4 @@ public class MainActivity extends DaemsActivity implements
     {  
         Toast.makeText(MainActivity.this, msg, Toast.LENGTH_LONG).show();
     }
-
-	@Override
-	public void onMessage(Message message) {
-		String content = String.valueOf(message.getData().get("content"));
-		tvTopbar.setText(String.valueOf(BoundaryReceiver.isRunning) + "," + content);
-	}
 }

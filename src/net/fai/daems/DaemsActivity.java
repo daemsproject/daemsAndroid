@@ -2,6 +2,8 @@ package net.fai.daems;
 
 import java.lang.reflect.Field;
 
+import org.greenrobot.eventbus.EventBus;
+
 import net.fai.daems.constant.Daems;
 import net.fai.daems.constant.ViewId;
 import android.annotation.TargetApi;
@@ -25,8 +27,11 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 public abstract class DaemsActivity extends Activity {
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	final protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		if (subscribeMessage()) {
+			EventBus.getDefault().register(this);
+		}
 		beforeSetContentView();
 		int viewId = getContentView();
 		if (viewId != Daems.View.NONE_VIEW) {
@@ -48,6 +53,19 @@ public abstract class DaemsActivity extends Activity {
 		onCreateActivity(savedInstanceState);
 	}
 	
+	
+	
+	@Override
+	final protected void onDestroy() {
+		super.onDestroy();
+		if (subscribeMessage()) {
+			EventBus.getDefault().unregister(this);
+		}
+		onDestroyActivity();
+	}
+
+
+
 	public void beforeSetContentView() {}
 	
 	public abstract int getContentView();
@@ -61,6 +79,10 @@ public abstract class DaemsActivity extends Activity {
 	}
 	
 	public abstract void onCreateActivity(Bundle savedInstanceState);
+	public boolean subscribeMessage() {
+		return false;
+	}
+	public void onDestroyActivity() {};
 	
 	/**
 	 * 初始化Activity上的组件

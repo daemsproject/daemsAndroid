@@ -61,11 +61,6 @@ public class ChatActivity extends DaemsActivity implements OnClickListener, OnTo
 	}
 	
 	@Override
-	protected void onDestroy() {
-		super.onDestroy();
-	}
-	
-	@Override
 	protected void onResume() {
 		super.onResume();
 		DaemsMessageReceiver.ehList.add(this);

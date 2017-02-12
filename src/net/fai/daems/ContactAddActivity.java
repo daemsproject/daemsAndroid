@@ -45,12 +45,6 @@ public class ContactAddActivity extends DaemsActivity implements OnClickListener
 	}
 
 	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-	}
-
-	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();

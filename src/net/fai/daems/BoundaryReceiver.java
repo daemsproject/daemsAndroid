@@ -1,6 +1,10 @@
 package net.fai.daems;
 
+import org.greenrobot.eventbus.EventBus;
+
 import net.fai.daems.constant.Daems;
+import net.fai.daems.message.ChatMessage;
+import net.fai.daems.message.DaemsMessage;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -16,30 +20,12 @@ public class BoundaryReceiver extends Service {
 	}
 	
 	public void onReceive(String msg) {
-		Intent intent = new Intent();
-		intent.setAction(Daems.Action.MESSAGE_IN);
-		intent.putExtra("count", ++count);
-		intent.putExtra("msg", msg);
-		sendBroadcast(intent);
-//		Thread thread = new Thread() {
-//			@Override
-//			public void run() {
-//				while (true) {
-//					Intent intent = new Intent();
-//					intent.setAction(Actions.MESSAGE_IN);
-//					intent.putExtra("count", ++count);
-//					intent.putExtra("msg", "定時任務發送的消息:" + count);
-//					sendBroadcast(intent);
-//					try {
-//						Thread.sleep(10000);
-//					} catch (InterruptedException e) {
-//						e.printStackTrace();
-//					}
-//				}
-//			}
-//			
-//		};
-//		thread.start();
+		//TODO parse msg to Daems message
+		DaemsMessage message = new DaemsMessage();
+		ChatMessage cm = new ChatMessage();
+		cm.setData("你好EventBus," + msg);
+		message.setPayload(cm);
+		EventBus.getDefault().post(message);
 	}
 
 	@Override
@@ -52,8 +38,9 @@ public class BoundaryReceiver extends Service {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		register();
 		isRunning = true;
+		register();
+		
 	}
 
 	@Override

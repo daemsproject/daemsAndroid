@@ -7,7 +7,6 @@ import net.fai.daems.ChatActivity;
 import net.fai.daems.R;
 import net.fai.daems.adapter.ContactAdapter;
 import net.fai.daems.adapter.item.ContactItem;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,12 +17,11 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-public class ContactFragment extends Fragment implements OnItemClickListener {
-	private Context context;
+public class ContactFragment extends DaemsFragment implements OnItemClickListener {
 	ListView lvContact;
 
 	public ContactFragment(Context context) {
-		this.context = context;
+		super(context);
 	}
 
 	@Override
@@ -43,7 +41,7 @@ public class ContactFragment extends Fragment implements OnItemClickListener {
 		}
 		return items;
 	}
-
+	
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		 Intent intent = new Intent(context, ChatActivity.class);
