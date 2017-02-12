@@ -8,6 +8,7 @@ import android.content.Context;
 
 public class DaemsApplication extends Application {
 	private static DaemsApplication mApplication;
+	public static int version;
 
 	public synchronized static DaemsApplication getInstance() {
 		return mApplication;
@@ -17,6 +18,8 @@ public class DaemsApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 		mApplication = this;
+		// TODO query version
+		version = 1001;
 	}
 	
 	public NotificationManager getNotificationManager() {

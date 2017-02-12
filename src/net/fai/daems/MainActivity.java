@@ -1,5 +1,7 @@
 package net.fai.daems;
 
+import java.nio.charset.Charset;
+
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -9,6 +11,7 @@ import net.fai.daems.fragment.ContactFragment;
 import net.fai.daems.fragment.MeFragment;
 import net.fai.daems.message.ChatMessage;
 import net.fai.daems.message.DaemsMessage;
+import net.fai.daems.utils.HexUtils;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
@@ -121,9 +124,8 @@ public class MainActivity extends MessageListenActivity implements
 	}
 	
 	@Subscribe(threadMode = ThreadMode.MAIN)
-	public void onMessage(DaemsMessage message) {
-		String content = String.valueOf(((ChatMessage) message.getPayload()).getData());
-		tvTopbar.setText(String.valueOf(BoundaryReceiver.isRunning) + "," + content);
+	public void onMessage(ChatMessage message) {
+		tvTopbar.setText(new String(HexUtils.hexStringToBytes(message.getData()), Charset.forName("UTF-8")));
 	}
 	
 	/** NDK Demo Below **/
