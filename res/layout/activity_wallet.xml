@@ -42,6 +42,8 @@
         android:id="@+id/ly_chat_coin"
         android:layout_width="match_parent"
         android:layout_height="140dp"
+        android:clickable="true"
+        android:onClick="onClick"
         android:background="@color/lightgrey" >
 
         <Button
@@ -53,6 +55,7 @@
             android:layout_marginTop="5dp"
             android:background="@color/lightgrey"
             android:drawableRight="@drawable/ic_launcher"
+            android:onClick="onClick"
             android:gravity="center"
             android:text="1wfw..."
             android:textColor="@color/black"
@@ -112,6 +115,8 @@
 
     <RelativeLayout
         android:id="@+id/ly_flow_coin"
+        android:clickable="true"
+        android:onClick="onClick"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:background="@color/lightgrey" >
@@ -126,6 +131,7 @@
             android:layout_marginTop="5dp"
             android:background="@color/lightgrey"
             android:drawableRight="@drawable/ic_launcher"
+            android:onClick="onClick"
             android:gravity="center"
             android:text="5sdf..."
             android:textColor="@color/black"

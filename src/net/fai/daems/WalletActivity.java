@@ -29,6 +29,11 @@ public class WalletActivity extends DaemsActivity implements OnActionSheetSelect
 	Button btnAdd;
 	@ViewId(R.id.btn_back)
 	Button btnBack;
+	@ViewId(R.id.btnChatCoinAddress)
+	Button btnChatCoinAddress;
+	@ViewId(R.id.btnFlowCoinAddress)
+	Button btnFlowCoinAddress;
+	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	private int copyedPosition = -1;
 	private  AccountAdpater adapter;
@@ -41,13 +46,31 @@ public class WalletActivity extends DaemsActivity implements OnActionSheetSelect
 	@Override
 	public void onCreateActivity(Bundle savedInstanceState) {
 		adapter = new AccountAdpater(WalletActivity.this, getAccount());
-		
 	}
 
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_back:
 			this.finish();
+			break;
+		case R.id.btnChatCoinAddress:
+			DaemsApplication.getInstance().copy(btnChatCoinAddress.getText());
+			Toast.makeText(this, "聊天币钱包地址已复制", Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.btnFlowCoinAddress:
+			DaemsApplication.getInstance().copy(btnFlowCoinAddress.getText());
+			Toast.makeText(this, "流量币钱包地址已复制", Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.ly_chat_coin:
+			Toast.makeText(this, "聊天详细", Toast.LENGTH_SHORT).show();
+//			Intent intent1 = new Intent(WalletActivity.this,
+//					ContactAddActivity.class);
+//			startActivity(intent1);
+		case R.id.ly_flow_coin:
+			Toast.makeText(this, "流量详细", Toast.LENGTH_SHORT).show();
+//			Intent intent2 = new Intent(WalletActivity.this,
+//					ContactAddActivity.class);
+//			startActivity(intent2);
 			break;
 			default:
 		}

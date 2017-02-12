@@ -2,8 +2,6 @@ package net.fai.daems;
 
 import java.lang.reflect.Field;
 
-import com.readystatesoftware.systembartint.SystemBarTintManager;
-
 import net.fai.daems.constant.Daems;
 import net.fai.daems.constant.ViewId;
 import android.annotation.TargetApi;
@@ -16,7 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
+
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 /**
  * Base Activity
