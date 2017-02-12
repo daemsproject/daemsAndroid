@@ -12,6 +12,7 @@ import net.fai.daems.app.DaemsApplication;
 import net.fai.daems.constant.ViewId;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -62,10 +63,9 @@ public class WalletActivity extends DaemsActivity implements OnActionSheetSelect
 			Toast.makeText(this, "流量币钱包地址已复制", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.ly_chat_coin:
-			Toast.makeText(this, "聊天详细", Toast.LENGTH_SHORT).show();
-//			Intent intent1 = new Intent(WalletActivity.this,
-//					ContactAddActivity.class);
-//			startActivity(intent1);
+			Intent intent1 = new Intent(WalletActivity.this,
+					ChatCoinDetailActivity.class);
+			startActivity(intent1);
 		case R.id.ly_flow_coin:
 			Toast.makeText(this, "流量详细", Toast.LENGTH_SHORT).show();
 //			Intent intent2 = new Intent(WalletActivity.this,

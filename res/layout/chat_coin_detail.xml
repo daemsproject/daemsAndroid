@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ly_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/background" >
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/chatCoin"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"
+            android:background="@color/background"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:onClick="onClick"
+            android:text="@string/wallet"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ly_chat_coin_detail"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/chat_coin_detail_background_style" >
+
+        <Button
+            android:id="@+id/btnChatCoinAddress"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/coin_detail_background"
+            android:drawableRight="@drawable/ic_launcher"
+            android:gravity="center"
+            android:text="1DQe9F3agsDcr4qoTZ3Sush4e88Nv9tNxa"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+        <ImageButton
+            android:id="@+id/btnQRCode"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/btnChatCoinAddress"
+            android:background="@color/coin_detail_background"
+            android:src="@drawable/ic_launcher"/>
+        
+        <Button
+            android:id="@+id/btnChatCoinAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/btnChatCoinAddress"
+            android:layout_toLeftOf="@+id/btnQRCode"
+            android:background="@color/coin_detail_background"
+            android:drawableLeft="@drawable/ic_launcher"
+            android:gravity="center"
+            android:text="88.88"
+            android:textColor="@color/yellow"
+            android:textSize="18sp" />
+        
+        <Button
+            android:id="@+id/btnChatCoinSend"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="35dp"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@+id/btnChatCoinAmount"
+            android:layout_toLeftOf="@+id/btnQRCode"
+            android:background="@color/coin_detail_button_bg"
+            android:gravity="center"
+            android:text="发送"
+            android:textColor="@color/coin_detail_button_text"
+            android:textSize="18sp" />
+    </RelativeLayout>
+    
+    <ListView
+        android:id="@+id/chatCoinTrans"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:divider="@drawable/list_divider"
+    	android:dividerHeight="1dp" />
+
+</LinearLayout>

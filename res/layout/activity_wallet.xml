@@ -29,6 +29,7 @@
             android:layout_marginLeft="10dp"
             android:background="@color/background"
             android:drawableLeft="@drawable/ic_launcher"
+            android:onClick="onClick"
             android:text="@string/me"
             android:textColor="@color/white" />
     </RelativeLayout>

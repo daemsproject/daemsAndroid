@@ -6,6 +6,7 @@ import com.google.common.collect.Lists;
 
 import net.fai.daems.adapter.item.DaemsItem;
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,10 @@ public abstract class DaemsAdapter<E extends DaemsItem> extends BaseAdapter {
 	
 	public Context getContext() {
 		return context;
+	}
+	
+	public Resources getResources() {
+		return context.getResources();
 	}
 
 	public LayoutInflater getInflater() {
