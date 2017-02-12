@@ -76,12 +76,15 @@ public class WalletActivity extends DaemsActivity implements OnActionSheetSelect
 					.setNegativeButton("取消", new DialogInterface.OnClickListener() {
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
+							if (accessor.getUserPassword() == null || "".equals(accessor.getUserPassword())) {
+								WalletActivity.this.finish();
+							}
 						}
 					})
 					.setOnCancelListener(new OnCancelListener() {
 						@Override
 						public void onCancel(DialogInterface dialog) {
-							if (accessor.getUserPassword() == null) {
+							if (accessor.getUserPassword() == null || "".equals(accessor.getUserPassword())) {
 								WalletActivity.this.finish();
 							}
 						}
