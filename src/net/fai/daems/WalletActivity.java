@@ -10,6 +10,9 @@ import net.fai.daems.adapter.AccountAdpater;
 import net.fai.daems.adapter.item.AccountItem;
 import net.fai.daems.app.DaemsApplication;
 import net.fai.daems.constant.ViewId;
+import net.fai.daems.data.DataAccessor;
+import net.fai.daems.data.DummyAccessor;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
@@ -17,6 +20,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 /**
@@ -35,6 +39,8 @@ public class WalletActivity extends DaemsActivity implements OnActionSheetSelect
 	@ViewId(R.id.btnFlowCoinAddress)
 	Button btnFlowCoinAddress;
 	
+	DataAccessor accessor = new DummyAccessor();
+	
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	private int copyedPosition = -1;
 	private  AccountAdpater adapter;
@@ -47,6 +53,40 @@ public class WalletActivity extends DaemsActivity implements OnActionSheetSelect
 	@Override
 	public void onCreateActivity(Bundle savedInstanceState) {
 		adapter = new AccountAdpater(WalletActivity.this, getAccount());
+	}
+	
+
+	@Override
+	public void beforeSetContentView() {
+		if (accessor.getUserPassword() == null) {
+			final EditText t = new EditText(this);
+			t.setHint("密码设置至少为6位");
+			new AlertDialog.Builder(this).setTitle("请设置密码")
+					.setView(t).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							String text = t.getText().toString();
+							if (!"".equals(text.trim())) {
+								accessor.setUserPassword(t.getText().toString());
+							} else {
+								WalletActivity.this.finish();
+							}
+						}
+					})
+					.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+						}
+					})
+					.setOnCancelListener(new OnCancelListener() {
+						@Override
+						public void onCancel(DialogInterface dialog) {
+							if (accessor.getUserPassword() == null) {
+								WalletActivity.this.finish();
+							}
+						}
+					}).show();
+		}
 	}
 
 	public void onClick(View v) {
