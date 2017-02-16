@@ -21,12 +21,12 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:background">@color/background</item>
+        <item name="android:background">@color/bottom_background</item>
         <item name="android:button">@null</item>
         <item name="android:gravity">center</item>
-        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingTop">5.3dp</item>
         <item name="android:textColor">@drawable/tab_menu_text</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">8sp</item>
     </style>
     
 	<!-- 定义一个样式，继承android系统的对话框样式 android:style/Theme.Dialog-->

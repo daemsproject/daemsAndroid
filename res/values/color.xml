@@ -4,8 +4,10 @@
     <color name="trans">#00000000</color>
     <color name="blue">#0000ff</color>
     <color name="trans_blue">#7f4A708B</color>
-    <color name="tras_black">#7f000000</color>
-    <color name="background">#9370DB</color>
+    <color name="trans_black">#b2000000</color>
+    <color name="background">#454170</color>
+    <color name="background_50">#7f454170</color>
+    <color name="bottom_background">#ececf3</color>
     
     <color name="coin_detail_background">#7295F4</color>
     <color name="coin_detail_button_bg">#C7D5FB</color>
