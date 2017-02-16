@@ -1,5 +1,5 @@
 <inset xmlns:android="http://schemas.android.com/apk/res/android"
-    android:insetLeft="60dp"
+    android:insetLeft="0dp"
     android:insetRight="0dp" >
 
     <shape android:shape="rectangle" >

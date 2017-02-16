@@ -37,8 +37,9 @@ public class ChatFragment extends DaemsFragment implements OnItemClickListener {
 	private List<ChatItem> getChatItems() {
 		List<ChatItem> items = new ArrayList<ChatItem>();
 		for (int i = 0; i < 20; i++) {
-			items.add(new ChatItem(R.drawable.ic_launcher, "Daems" + i,
-					"明早几点起床", "11月" + i + "日"));
+			int index = i % 9;
+			items.add(new ChatItem(getResource("avatar" + (index + 1)), "Daems" + i,
+					"明早几点起床", "11月" + (i + 1) + "日"));
 		}
 		return items;
 	}
@@ -51,4 +52,11 @@ public class ChatFragment extends DaemsFragment implements OnItemClickListener {
          //启动Intent
          startActivity(intent);
 	}
+	
+	private int  getResource(String imageName){
+     int resId = getResources().getIdentifier(imageName, "drawable", context.getPackageName());
+     return resId;
+}
+
+
 }

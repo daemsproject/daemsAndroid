@@ -8,6 +8,9 @@
     <color name="background">#454170</color>
     <color name="background_50">#7f454170</color>
     <color name="bottom_background">#ececf3</color>
+    <color name="list_chat_name">#241736</color>
+    <color name="list_chat_content">#948e9d</color>
+    <color name="list_chat_date">#c0bdc5</color>
     
     <color name="coin_detail_background">#7295F4</color>
     <color name="coin_detail_button_bg">#C7D5FB</color>
