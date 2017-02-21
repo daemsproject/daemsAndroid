@@ -19,13 +19,13 @@
     <TextView 
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
+    	android:layout_height="match_parent"
         android:textSize="12sp"
         android:textColor="@color/list_chat_name"
         android:layout_toEndOf="@+id/ivIcon"
         android:layout_below="@id/separator"
         android:layout_marginLeft="8.7dp"
-        android:layout_marginTop="12.5dp"
+        android:gravity="center_vertical"
         />
     <ImageView 
         android:src="@drawable/next"
