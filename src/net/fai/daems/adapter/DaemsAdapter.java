@@ -14,7 +14,7 @@ import android.widget.BaseAdapter;
 
 public abstract class DaemsAdapter<E extends DaemsItem> extends BaseAdapter {
 	
-	private Context context;
+	protected Context context;
 	private LayoutInflater inflater;
 	private List<E> items = null;
 	

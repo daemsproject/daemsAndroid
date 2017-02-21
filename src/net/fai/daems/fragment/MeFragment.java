@@ -37,9 +37,9 @@ public class MeFragment extends DaemsFragment implements OnItemClickListener {
 
 	private List<MeItem> getMeItems() {
 		List<MeItem> items = new ArrayList<MeItem>();
-		items.add(new MeItem(R.drawable.ic_launcher, "账号", 80));
-		items.add(new MeItem(R.drawable.ic_launcher, "钱包", 80));
-		items.add(new MeItem(R.drawable.ic_launcher, "网络", 80));
+		items.add(new MeItem(R.drawable.me_account, "账号", 13));
+		items.add(new MeItem(R.drawable.me_wallet, "钱包", 1));
+		items.add(new MeItem(R.drawable.me_network, "网络", 24));
 		return items;
 	}
 

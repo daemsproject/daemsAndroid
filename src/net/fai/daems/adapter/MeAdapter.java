@@ -4,11 +4,13 @@ import java.util.List;
 
 import net.fai.daems.R;
 import net.fai.daems.adapter.item.MeItem;
+import net.fai.daems.utils.DipPxUtils;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MeAdapter extends DaemsAdapter<MeItem> {
@@ -21,6 +23,7 @@ public class MeAdapter extends DaemsAdapter<MeItem> {
 		public ImageView icon;
 		public TextView name;
 		public View view;
+		public int height;
 	}
 
 	@Override
@@ -40,8 +43,11 @@ public class MeAdapter extends DaemsAdapter<MeItem> {
 		viewHolder.icon.setImageResource(item.imageId);
 		viewHolder.name.setText(item.name);
 		LayoutParams lp = viewHolder.view.getLayoutParams();
-		lp.height = item.dividerHeight;
+		lp.height = DipPxUtils.dip2px(context, item.dividerHeight);
 		viewHolder.view.setLayoutParams(lp);
+		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                144 + DipPxUtils.dip2px(context, item.dividerHeight));
+		view.setLayoutParams(p);
 		return view;
 	}
 
