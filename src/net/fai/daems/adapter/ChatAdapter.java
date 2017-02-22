@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.fai.daems.R;
 import net.fai.daems.adapter.item.ChatItem;
+import net.fai.daems.utils.FontHelper;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class ChatAdapter extends DaemsAdapter<ChatItem> {
 		if (view == null) {
 			viewHolder = new ViewHolder();
 			view = this.getInflater().inflate(R.layout.chat_item, parent, false);
+			FontHelper.applyFont(context, view, "fonts/ChanticleerRomanNF.ttf");
 			viewHolder.image = (ImageView) view.findViewById(R.id.ivAvatar);
 			viewHolder.name = (TextView) view.findViewById(R.id.tvName);
 			viewHolder.date = (TextView) view.findViewById(R.id.tvDate);
