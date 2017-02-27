@@ -27,7 +27,7 @@ public class AccountActivity extends DaemsActivity implements OnActionSheetSelec
 	@ViewId(R.id.btnAdd)
 	Button btnAdd;
 	@ViewId(R.id.ibtn_back)
-	ImageButton btnBack;
+	Button btnBack;
 	@ViewId(R.id.lvAccount)
 	ListView lvAccount;
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -63,11 +63,12 @@ public class AccountActivity extends DaemsActivity implements OnActionSheetSelec
 
 	private List<AccountItem> getAccount() {
 		List<AccountItem> accounts = new ArrayList<AccountItem>();
-		accounts.add(new AccountItem("c380c8e6a0c8acda2381d4c9465acff8ec203ce6", sdf.format(new Date())));
-		accounts.add(new AccountItem("d3b9c726b4430e1d8f09e2b0130996b40ca726ad", sdf.format(new Date())));
-		accounts.add(new AccountItem("a9e62497cc516e908d179c5fc6590b92ac67416e", sdf.format(new Date())));
-		accounts.add(new AccountItem("51417e732c29917818659a8a7ef67a04cd3401ba", sdf.format(new Date())));
-		accounts.add(new AccountItem("48f6f9d86167fd7e7c15b9f3faf3031b7f051312", sdf.format(new Date())));
+		//AccountItem(int imageId, String name, String info, String date)
+		accounts.add(new AccountItem(R.drawable.avatar1, "c380c8e6a0c8acda2381d4c9465acff8ec203ce6", sdf.format(new Date()), ""));
+		accounts.add(new AccountItem(R.drawable.avatar2,"d3b9c726b4430e1d8f09e2b0130996b40ca726ad", sdf.format(new Date()), ""));
+		accounts.add(new AccountItem(R.drawable.avatar3,"a9e62497cc516e908d179c5fc6590b92ac67416e", sdf.format(new Date()), ""));
+		accounts.add(new AccountItem(R.drawable.avatar4,"51417e732c29917818659a8a7ef67a04cd3401ba", sdf.format(new Date()), ""));
+		accounts.add(new AccountItem(R.drawable.avatar5,"48f6f9d86167fd7e7c15b9f3faf3031b7f051312", sdf.format(new Date()), ""));
 		return accounts;
 	}
 
@@ -81,7 +82,7 @@ public class AccountActivity extends DaemsActivity implements OnActionSheetSelec
 	public void onClick(int whichButton) {
 		switch (whichButton) {
 		case R.id.action_copy:
-			DaemsApplication.getInstance().copy(adapter.getItem(copyedPosition).getKey());
+			DaemsApplication.getInstance().copy(adapter.getItem(copyedPosition).name);
 			Toast.makeText(AccountActivity.this, "账号已复制", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.action_delete:
@@ -97,7 +98,7 @@ public class AccountActivity extends DaemsActivity implements OnActionSheetSelec
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btnAdd:
-			((AccountAdpater) lvAccount.getAdapter()).appendItem(new AccountItem("c380c8e6a0c8acda2381d4c9465acff8ec203ce6", sdf.format(new Date())));
+			((AccountAdpater) lvAccount.getAdapter()).appendItem(new AccountItem(R.drawable.avatar6, "c380c8e6a0c8acda2381d4c9465acff8ec203ce6", sdf.format(new Date()), ""));
 			break;
 		case R.id.ibtn_back:
 			this.finish();

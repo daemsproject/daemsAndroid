@@ -121,11 +121,11 @@ public class WalletActivity extends DaemsActivity implements OnActionSheetSelect
 	
 	private List<AccountItem> getAccount() {
 		List<AccountItem> accounts = new ArrayList<AccountItem>();
-		accounts.add(new AccountItem("c380c8e6a0c8acda2381d4c9465acff8ec203ce6", sdf.format(new Date())));
-		accounts.add(new AccountItem("d3b9c726b4430e1d8f09e2b0130996b40ca726ad", sdf.format(new Date())));
-		accounts.add(new AccountItem("a9e62497cc516e908d179c5fc6590b92ac67416e", sdf.format(new Date())));
-		accounts.add(new AccountItem("51417e732c29917818659a8a7ef67a04cd3401ba", sdf.format(new Date())));
-		accounts.add(new AccountItem("48f6f9d86167fd7e7c15b9f3faf3031b7f051312", sdf.format(new Date())));
+		accounts.add(new AccountItem(R.drawable.avatar1, "c380c8e6a0c8acda2381d4c9465acff8ec203ce6", sdf.format(new Date()), ""));
+		accounts.add(new AccountItem(R.drawable.avatar2,"d3b9c726b4430e1d8f09e2b0130996b40ca726ad", sdf.format(new Date()), ""));
+		accounts.add(new AccountItem(R.drawable.avatar3,"a9e62497cc516e908d179c5fc6590b92ac67416e", sdf.format(new Date()), ""));
+		accounts.add(new AccountItem(R.drawable.avatar4,"51417e732c29917818659a8a7ef67a04cd3401ba", sdf.format(new Date()), ""));
+		accounts.add(new AccountItem(R.drawable.avatar5,"48f6f9d86167fd7e7c15b9f3faf3031b7f051312", sdf.format(new Date()), ""));
 		return accounts;
 	}
 
@@ -139,7 +139,7 @@ public class WalletActivity extends DaemsActivity implements OnActionSheetSelect
 	public void onClick(int whichButton) {
 		switch (whichButton) {
 		case R.id.action_copy:
-			DaemsApplication.getInstance().copy(adapter.getItem(copyedPosition).getKey());
+//			DaemsApplication.getInstance().copy(adapter.getItem(copyedPosition).getKey());
 			Toast.makeText(WalletActivity.this, "账号已复制", Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.action_delete:

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" 
-    android:background="@color/background" 
+    android:background="@color/greybackground" 
     android:layout_width="match_parent"
     android:layout_height="match_parent">
      <RelativeLayout
         android:id="@+id/ly_top_bar"
+        android:background="@color/background"
         android:layout_width="match_parent"
         android:layout_height="48dp" >
-        
         <TextView
             android:id="@+id/tvName"
             android:layout_width="match_parent"
@@ -16,29 +16,37 @@
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="@string/account"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <ImageButton
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+         <Button
             android:id="@+id/ibtn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6.667dp"
+            android:text="@string/me"
+            android:textSize="16sp"
+            android:textColor="@color/list_chat_date"
             android:background="@color/background"
-            android:src="@drawable/ic_launcher" />
+            android:drawableLeft="@drawable/back" />
     </RelativeLayout>
-	<Button  
-	    android:id="@+id/btnAdd"
-	    android:text="@string/new_account"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"/>
     <ListView
         android:id="@+id/lvAccount"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:gravity="center"
+        android:divider="@drawable/list_divider"
     	android:dividerHeight="1dp" />
+    <Button
+	    android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_margin="6.667dp"
+        android:background="@color/coin_detail_background"
+        android:text="@string/new_account"
+	    android:textColor="@color/white"
+	    android:textSize="16sp"
+        android:gravity="center"/>
 </LinearLayout>
