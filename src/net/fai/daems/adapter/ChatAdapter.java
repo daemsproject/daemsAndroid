@@ -31,7 +31,7 @@ public class ChatAdapter extends DaemsAdapter<ChatItem> {
 		if (view == null) {
 			viewHolder = new ViewHolder();
 			view = this.getInflater().inflate(R.layout.chat_item, parent, false);
-			FontHelper.applyFont(context, view, "fonts/ChanticleerRomanNF.ttf");
+			FontHelper.applyFont(view);
 			viewHolder.image = (ImageView) view.findViewById(R.id.ivAvatar);
 			viewHolder.name = (TextView) view.findViewById(R.id.tvName);
 			viewHolder.date = (TextView) view.findViewById(R.id.tvDate);

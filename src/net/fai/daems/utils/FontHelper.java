@@ -8,15 +8,21 @@ import android.widget.TextView;
 
 public class FontHelper {
 	
-	public static void applyFont(final Context context, final View root, final String fontPath) {
+	public static Typeface typeface;
+	
+	public static void initCustomTypeface(Context context, String fontPath) {
+		typeface = Typeface.createFromAsset(context.getAssets(), fontPath);
+	}
+	
+	public static void applyFont(final View root) {
 		try {
 			if (root instanceof ViewGroup) {
 				ViewGroup viewGroup = (ViewGroup) root;
 				int childCount = viewGroup.getChildCount();
 				for (int i = 0; i < childCount; i++)
-					applyFont(context, viewGroup.getChildAt(i), fontPath);
+					applyFont(viewGroup.getChildAt(i));
 			} else if (root instanceof TextView)
-				((TextView) root).setTypeface(Typeface.createFromAsset(context.getAssets(), fontPath));
+				((TextView) root).setTypeface(typeface);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,5 +1,6 @@
 package net.fai.daems.app;
 
+import net.fai.daems.utils.FontHelper;
 import android.app.Application;
 import android.app.NotificationManager;
 import android.content.ClipData;
@@ -20,6 +21,7 @@ public class DaemsApplication extends Application {
 		mApplication = this;
 		// TODO query version
 		version = 1001;
+		FontHelper.initCustomTypeface(this, "fonts/AdobeHeitiStd-Regular.otf");
 	}
 	
 	public NotificationManager getNotificationManager() {
