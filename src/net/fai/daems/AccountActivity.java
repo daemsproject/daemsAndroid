@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -45,15 +46,24 @@ public class AccountActivity extends DaemsActivity implements OnActionSheetSelec
 		btnBack.setOnClickListener(this);
 		adapter = new AccountAdpater(AccountActivity.this, getAccount());
 		lvAccount.setAdapter(adapter);
-		lvAccount.setOnItemLongClickListener(new OnItemLongClickListener() {
+		lvAccount.setOnItemClickListener(new OnItemClickListener() {
+
 			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
-					int position, long arg3) {
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+					long arg3) {
 				copyedPosition = position;
 				ActionSheet.showSheet(AccountActivity.this, AccountActivity.this, AccountActivity.this);
-				return true;
 			}
 		});
+//		lvAccount.setOnItemLongClickListener(new OnItemLongClickListener() {
+//			@Override
+//			public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
+//					int position, long arg3) {
+//				copyedPosition = position;
+//				ActionSheet.showSheet(AccountActivity.this, AccountActivity.this, AccountActivity.this);
+//				return true;
+//			}
+//		});
 	}
 	
 	@Override

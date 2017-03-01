@@ -15,7 +15,7 @@
         android:singleLine="true"
         android:textSize="13sp"
         android:textColor="@color/list_chat_name"
-        android:background="@drawable/search_contact"
+        android:background="@drawable/shape_search_contact"
         android:paddingRight="15dp"
         android:paddingLeft="20dp"
         android:gravity="center"/>
