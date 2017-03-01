@@ -52,11 +52,4 @@ public class ChatFragment extends DaemsFragment implements OnItemClickListener {
          //启动Intent
          startActivity(intent);
 	}
-	
-	private int  getResource(String imageName){
-     int resId = getResources().getIdentifier(imageName, "drawable", context.getPackageName());
-     return resId;
-}
-
-
 }

@@ -117,15 +117,7 @@ public class MainActivity extends MessageListenActivity implements
 			break;
 		case R.id.rd_menu_contact:
 			tvTopbar.setText(R.string.contact);
-			btnTopbar.setVisibility(View.VISIBLE);
-			btnTopbar.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					Intent intent = new Intent(MainActivity.this,
-							ContactAddActivity.class);
-					startActivity(intent);
-				}
-			});
+			btnTopbar.setVisibility(View.INVISIBLE);
 			if (contactFragment == null) {
 				contactFragment = new ContactFragment(MainActivity.this);
 				transaction.add(R.id.fragment_container, contactFragment);

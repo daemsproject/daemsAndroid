@@ -3,12 +3,11 @@
 
     <string name="app_name">Daems</string>
     <string name="chat">聊天</string>
-    <string name="contact">联系人</string>
+    <string name="contact">通讯录</string>
     <string name="edit">编辑</string>
     <string name="me">我</string>
     <string name="manageAccount">账户管理</string>
-    <string name="switchContact">切换账号联系人</string>
-    <string name="searchContact">搜索联系人</string>
+    <string name="search">搜索</string>
     <string name="send">发送</string>
     <string name="contact_address">请输入联系人地址</string>
     <string name="add">添加</string>

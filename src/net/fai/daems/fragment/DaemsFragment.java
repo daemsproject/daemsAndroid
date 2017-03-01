@@ -35,4 +35,10 @@ public abstract class DaemsFragment extends Fragment {
 		super.onDestroy();
 //		EventBus.getDefault().unregister(this);
 	}
+	
+	protected int getResource(String imageName) {
+		int resId = getResources().getIdentifier(imageName, "drawable",
+				context.getPackageName());
+		return resId;
+	}
 }

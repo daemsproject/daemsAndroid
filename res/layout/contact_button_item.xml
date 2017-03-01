@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="60dp" >
-	
+    android:layout_height="48dp" >
     <ImageView 
-        android:id="@+id/ivAvatar"
+        android:id="@+id/ivIcon"
         android:src="@drawable/ic_launcher"
         android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
-    	android:layout_marginLeft="6.6dp"
-    	android:layout_marginTop="6.6dp"
-    	android:layout_marginBottom="6.6dp"
-    	android:background="@drawable/textview_avatar_style"
-        />
+    	android:layout_marginLeft="6.7dp"
+    	android:layout_marginTop="7.3dp"/>
     <TextView 
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
     	android:layout_height="match_parent"
-    	android:gravity="center_vertical"
-        android:textSize="13sp"
+        android:textSize="12sp"
         android:textColor="@color/list_chat_name"
-        android:layout_marginLeft="8dp"
-        android:layout_toEndOf="@+id/ivAvatar"/>
-
+        android:layout_toEndOf="@+id/ivIcon"
+        android:layout_marginLeft="8.7dp"
+        android:gravity="center_vertical"
+        />
 </RelativeLayout>

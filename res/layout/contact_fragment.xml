@@ -4,15 +4,40 @@
     android:layout_height="match_parent"
     android:focusable="true"
 	android:focusableInTouchMode="true" 
-    android:padding="16dp">
+	android:background="@color/greybackground">
 	<EditText
 	    android:id="@+id/tvSearchContact"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/searchContact"
+        android:layout_height="38dp"
+        android:layout_margin="6.667dp"
+        android:hint="@string/search"
+        android:drawableRight="@drawable/search"
         android:singleLine="true"
+        android:textSize="13sp"
+        android:textColor="@color/list_chat_name"
+        android:background="@drawable/search_contact"
+        android:paddingRight="15dp"
+        android:paddingLeft="20dp"
         android:gravity="center"/>
+	<ListView
+        android:id="@+id/lvContactButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/list_divider"
+    	android:dividerHeight="1dp" 
+        />
+	<TextView 
+	    android:layout_width="match_parent"
+        android:layout_height="23.333dp"
+        android:gravity="left|center_vertical"
+        android:paddingLeft="6.667dp"
+        android:text="@string/account"
+        android:textSize="10sp"
+        android:textColor="@color/list_chat_content"
+	    />
     <ListView
+        android:paddingLeft="16dp"
+        android:background="@color/white"
         android:id="@+id/lvContact"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
