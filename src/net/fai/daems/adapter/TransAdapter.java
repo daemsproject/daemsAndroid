@@ -46,12 +46,15 @@ public class TransAdapter extends DaemsAdapter<TransItem> {
 		viewHolder.date.setText(item.date);
 		Drawable transIcon;
 		String amount;
+		if (item.status) {
+		    transIcon = getResources().getDrawable(R.drawable.trans_done);
+		} else {
+			transIcon = getResources().getDrawable(R.drawable.trans_doing);
+		}
 		if (item.income) {
-		    transIcon = getResources().getDrawable(R.drawable.ic_launcher);
 		    viewHolder.info.setTextColor(getResources().getColor(R.color.green));
 		    amount = "+" + item.amount;
 		} else {
-			transIcon = getResources().getDrawable(R.drawable.campus_info);
 			viewHolder.info.setTextColor(getResources().getColor(R.color.red));
 			amount = "-" + item.amount;
 		}

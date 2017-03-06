@@ -12,13 +12,15 @@ public class TransItem extends DaemsItem  {
 	public String date;
 	public boolean income = false;
 	public String amount;
+	public boolean status = false;
 	
-	public TransItem(int imageId, String name, String date, boolean income, String amount) {
+	public TransItem(int imageId, String name, String date, boolean income, String amount, boolean status) {
 		this.imageId = imageId;
 		this.name = name;
 		this.date = date;
 		this.income = income;
 		this.amount = amount;
+		this.status = status;
 	}
 	
 }

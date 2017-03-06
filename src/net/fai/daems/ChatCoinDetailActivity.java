@@ -76,11 +76,11 @@ public class ChatCoinDetailActivity extends DaemsActivity implements OnClickList
 	
 	private List<TransItem> getTrans() {
 		List<TransItem> items = new ArrayList<TransItem>();
-		items.add(new TransItem(R.drawable.ic_launcher, "c380c8e6a0c8acda2381d4c9465acff8ec203ce6", sdf.format(new Date()), true, "0.71"));
-		items.add(new TransItem(R.drawable.ic_launcher, "d3b9c726b4430e1d8f09e2b0130996b40ca726ad", sdf.format(new Date()), true, "1.56"));
-		items.add(new TransItem(R.drawable.ic_launcher, "a9e62497cc516e908d179c5fc6590b92ac67416e", sdf.format(new Date()), false, "1.06"));
-		items.add(new TransItem(R.drawable.ic_launcher, "51417e732c29917818659a8a7ef67a04cd3401ba", sdf.format(new Date()), true, "1.56"));
-		items.add(new TransItem(R.drawable.ic_launcher, "48f6f9d86167fd7e7c15b9f3faf3031b7f051312", sdf.format(new Date()), false, "3.00"));
+		items.add(new TransItem(R.drawable.avatar1, "c380c8e6a0c8acda2381d4c9465acff8ec203ce6", sdf.format(new Date()), true, "0.71", false));
+		items.add(new TransItem(R.drawable.avatar2, "d3b9c726b4430e1d8f09e2b0130996b40ca726ad", sdf.format(new Date()), true, "1.56", true));
+		items.add(new TransItem(R.drawable.avatar3, "a9e62497cc516e908d179c5fc6590b92ac67416e", sdf.format(new Date()), false, "1.06", true));
+		items.add(new TransItem(R.drawable.avatar4, "51417e732c29917818659a8a7ef67a04cd3401ba", sdf.format(new Date()), true, "1.56", false));
+		items.add(new TransItem(R.drawable.avatar5, "48f6f9d86167fd7e7c15b9f3faf3031b7f051312", sdf.format(new Date()), false, "3.00", false));
 		return items;
 	}
 }

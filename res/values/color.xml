@@ -13,6 +13,7 @@
     <color name="list_chat_date">#c0bdc5</color>
     
     <color name="coin_detail_background">#7295F4</color>
+    <color name="coin_detail_background_30">#B27295F4</color>
     <color name="coin_detail_button_bg">#C7D5FB</color>
     <color name="coin_detail_button_text">#585784</color>
     <color name="coin_detail_charactor">#A9A5B1</color>
@@ -48,7 +49,7 @@
     <!-- 红色 -->
     <color name="red">#de1818</color>
     <!-- 黄色 -->
-    <color name="yellow">#FFFF00</color>
+    <color name="yellow">#FFD800</color>
     <!-- 70%透明度 -->
     <color name="sevenalpha">#AF000000</color>
 
