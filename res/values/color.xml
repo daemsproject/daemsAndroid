@@ -16,6 +16,9 @@
     <color name="coin_detail_button_bg">#C7D5FB</color>
     <color name="coin_detail_button_text">#585784</color>
     <color name="coin_detail_charactor">#A9A5B1</color>
+    <color name="coin_sub_background">#FBFBFB</color>
+    <color name="trans_text_in">#0FBA23</color>
+    <color name="trans_text_out">#DC2F00</color>
     
 
     <!-- 透明 -->
