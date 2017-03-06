@@ -27,7 +27,7 @@
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.buildCommand</key>
-					<value>F:/adt-bundle-windows-x86_64-20140624/android-ndk-r10b/ndk-build</value>
+					<value>D:/adt-bundle-windows-x86_64-20140702/android-ndk-r10b/ndk-build</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>

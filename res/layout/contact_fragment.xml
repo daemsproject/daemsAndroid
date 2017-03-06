@@ -36,7 +36,6 @@
         android:textColor="@color/list_chat_content"
 	    />
     <ListView
-        android:paddingLeft="16dp"
         android:background="@color/white"
         android:id="@+id/lvContact"
         android:layout_width="match_parent"

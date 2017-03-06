@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
 environment/project/com.android.toolchain.gcc.2136388962/NDKROOT/delimiter=;
 environment/project/com.android.toolchain.gcc.2136388962/NDKROOT/operation=replace
-environment/project/com.android.toolchain.gcc.2136388962/NDKROOT/value=F\:\\adt-bundle-windows-x86_64-20140624\\android-ndk-r10b
+environment/project/com.android.toolchain.gcc.2136388962/NDKROOT/value=D\:\\adt-bundle-windows-x86_64-20140702\\android-ndk-r10b
 environment/project/com.android.toolchain.gcc.2136388962/append=true
 environment/project/com.android.toolchain.gcc.2136388962/appendContributed=true
