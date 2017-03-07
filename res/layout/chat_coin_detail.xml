@@ -48,13 +48,13 @@
 
         <Button
             android:id="@+id/btnChatCoinAddress"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginTop="16.667dp"
             android:background="@color/coin_detail_background"
-            android:drawableRight="@drawable/copy"
-            android:gravity="center"
+            android:drawableRight="@drawable/copy_big"
+            android:layout_centerHorizontal="true"
             android:text="1DQe9F3agsDcr4qoTZ3Sush4e88Nv9tNxa"
             android:textColor="@color/white"
             android:textSize="12sp" />
