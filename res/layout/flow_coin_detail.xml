@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greybackground"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ly_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/background" >
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/flowCoin"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6.667dp"
+            android:text="@string/wallet"
+            android:textSize="16sp"
+            android:textColor="@color/list_chat_date"
+            android:background="@color/background" 
+            android:drawableLeft="@drawable/back"
+            android:onClick="onClick"
+            />
+        
+         <Button
+            android:id="@+id/trans_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13.667dp"
+            android:text="@string/trans"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:background="@color/background" 
+            android:onClick="onClick"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ly_chat_coin_detail"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginLeft="6.667dp"
+        android:layout_marginRight="6.667dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_flow_coin_detail_background" >
+
+        <Button
+            android:id="@+id/btnChatCoinAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16.667dp"
+            android:background="@color/flow_coin_detail_background"
+            android:drawableRight="@drawable/copy_big"
+            android:layout_centerHorizontal="true"
+            android:text="1DQe9F3agsDcr4qoTZ3Sush4e88Nv9tNxa"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/imgQRCode"
+            android:layout_width="73.333dp"
+            android:layout_height="73.333dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="44.667dp"
+            android:layout_marginTop="18.667dp"
+            android:layout_below="@+id/btnChatCoinAddress"
+            android:src="@drawable/ic_launcher"/>
+        
+        <Button
+            android:id="@+id/btnChatCoinAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="65dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/btnChatCoinAddress"
+            android:layout_toLeftOf="@+id/btnQRCode"
+            android:background="@color/flow_coin_detail_background"
+            android:drawableLeft="@drawable/flow_coin_left"
+            android:gravity="center"
+            android:text="88.88"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+        
+        <TextView
+            android:id="@+id/donateAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="36.667dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="66dp"
+            android:layout_marginBottom="6dp"
+            android:layout_below="@+id/btnChatCoinAmount"
+            android:layout_toLeftOf="@+id/btnQRCode"
+            android:gravity="center"
+            android:text="捐赠量：33445"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="23.333dp"
+        android:textSize="10sp"
+        android:layout_marginLeft="6.667dp"
+        android:background="@color/lightgrey"
+        android:textColor="@color/list_chat_content"
+        android:layout_gravity="left"
+        android:gravity="center"
+        android:text="@string/expire"
+        />
+    <ListView
+        android:id="@+id/lvExpiration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:divider="@drawable/list_divider_greybackground"
+    	android:dividerHeight="10dp" />
+
+</LinearLayout>

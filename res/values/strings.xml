@@ -20,5 +20,6 @@
     <string name="chatCoin">聊天币</string>
     <string name="flowCoin">流量币</string>
     <string name="trans">交易记录</string>
+    <string name="expire">即将失效</string>
     
 </resources>

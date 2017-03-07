@@ -12,6 +12,7 @@
     <color name="list_chat_content">#948e9d</color>
     <color name="list_chat_date">#c0bdc5</color>
     
+    <color name="flow_coin_detail_background">#4C9697</color>
     <color name="coin_detail_background">#7295F4</color>
     <color name="coin_detail_background_30">#B27295F4</color>
     <color name="coin_detail_button_bg">#C7D5FB</color>

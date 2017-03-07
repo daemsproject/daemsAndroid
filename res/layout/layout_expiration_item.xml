@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/greybackground"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="48dp" >
+        
+        <TextView 
+            android:id="@+id/tvDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="13.333dp"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/list_chat_name"
+            />
+        <Button 
+            android:id="@+id/btnAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="13.333dp"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/list_chat_name"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/flow_coin"
+            />
+        
+    </RelativeLayout>
+</LinearLayout>

@@ -109,11 +109,11 @@ public class WalletActivity extends DaemsActivity implements OnActionSheetSelect
 			Intent intent1 = new Intent(WalletActivity.this,
 					ChatCoinDetailActivity.class);
 			startActivity(intent1);
+			break;
 		case R.id.ly_flow_coin:
-			Toast.makeText(this, "流量详细", Toast.LENGTH_SHORT).show();
-//			Intent intent2 = new Intent(WalletActivity.this,
-//					ContactAddActivity.class);
-//			startActivity(intent2);
+			Intent intent2 = new Intent(WalletActivity.this,
+					FlowCoinDetailActivity.class);
+			startActivity(intent2);
 			break;
 			default:
 		}
