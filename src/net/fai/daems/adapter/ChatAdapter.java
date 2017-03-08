@@ -2,6 +2,8 @@ package net.fai.daems.adapter;
 
 import java.util.List;
 
+import com.nex3z.notificationbadge.NotificationBadge;
+
 import net.fai.daems.R;
 import net.fai.daems.adapter.item.ChatItem;
 import net.fai.daems.utils.FontHelper;
@@ -23,6 +25,7 @@ public class ChatAdapter extends DaemsAdapter<ChatItem> {
 		public TextView name;
 		public TextView date;
 		public TextView info;
+		public NotificationBadge mBadge;
 	}
 
 	@Override
@@ -36,6 +39,7 @@ public class ChatAdapter extends DaemsAdapter<ChatItem> {
 			viewHolder.name = (TextView) view.findViewById(R.id.tvName);
 			viewHolder.date = (TextView) view.findViewById(R.id.tvDate);
 			viewHolder.info = (TextView) view.findViewById(R.id.tvInfo);
+			viewHolder.mBadge = (NotificationBadge) view.findViewById(R.id.badge);
 			view.setTag(viewHolder);
 		} else {
 			viewHolder = (ViewHolder) view.getTag();
@@ -45,6 +49,7 @@ public class ChatAdapter extends DaemsAdapter<ChatItem> {
 		viewHolder.name.setText(item.name);
 		viewHolder.info.setText(item.info);
 		viewHolder.date.setText(item.date);
+		viewHolder.mBadge.setNumber(position);
 		return view;
 	}
 

@@ -12,6 +12,8 @@ import net.fai.daems.utils.HexUtils;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import com.nex3z.notificationbadge.NotificationBadge;
+
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
@@ -60,6 +62,8 @@ public class MainActivity extends MessageListenActivity implements
         if (!BoundaryReceiver.isRunning) {
         	startService(new Intent(MainActivity.this, BoundaryReceiver.class));
         }
+        NotificationBadge badge = (NotificationBadge)this.findViewById(R.id.badge);
+        badge.setText(".");
 	}
 	
 //	private void resetDrawableTopSize() {
