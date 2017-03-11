@@ -17,6 +17,7 @@
     <string name="wallet">钱包</string>
     <string name="delete">删除</string>
     <string name="cancel">取消</string>
+    <string name="ok">确定</string>
     <string name="copy">复制</string>
     <string name="chatCoin">聊天币</string>
     <string name="flowCoin">流量币</string>
@@ -32,4 +33,7 @@
     <string name="password_text">密码</string>
     <string name="confirm_trans">确认转账</string>
     <string name="confirm_donate">确认捐赠</string>
+    <string name="password_prompt1">提示密码非常重要</string>
+    <string name="password_prompt2">如果密码丢失或忘记，钱包中的币也会丢失</string>
+    <string name="password_prompt3">密码设置最少为6位</string>
 </resources>

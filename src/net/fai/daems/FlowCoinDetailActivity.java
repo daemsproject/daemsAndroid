@@ -52,6 +52,7 @@ public class FlowCoinDetailActivity extends DaemsActivity implements OnClickList
 
 	@Override
 	public void onCreateActivity(Bundle savedInstanceState) {
+		btnTransRecord.setOnClickListener(this);
 		adapter = new ExpirationAdapter(FlowCoinDetailActivity.this, getExpiration());
 		lvExpiration.setAdapter(adapter);
 		lvExpiration.setOnItemClickListener(new OnItemClickListener() {
@@ -80,7 +81,10 @@ public class FlowCoinDetailActivity extends DaemsActivity implements OnClickList
 		case R.id.btn_back:
 			this.finish();
 			break;
-		case R.id.btnChatCoinSend:
+		case R.id.trans_record:
+			Intent intent1 = new Intent(FlowCoinDetailActivity.this,
+					FlowCoinTransRecordActivity.class);
+			startActivity(intent1);
 			break;
 			default:
 		}
