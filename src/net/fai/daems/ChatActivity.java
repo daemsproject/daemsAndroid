@@ -30,8 +30,8 @@ public class ChatActivity extends DaemsActivity implements OnClickListener, OnTo
 	TextView tvName;
 	@ViewId(R.id.btn_send)
 	Button btnSend;
-	@ViewId(R.id.ibtn_back)
-	ImageButton iBtnBack;
+	@ViewId(R.id.btn_back)
+	Button btnBack;
 	@ViewId(R.id.etInput)
 	EditText etInput;
 	@ViewId(R.id.lvChatRecord)
@@ -57,7 +57,6 @@ public class ChatActivity extends DaemsActivity implements OnClickListener, OnTo
 		lvChatRecord.setOnFocusChangeListener(this);
 		lvChatRecord.setOnTouchListener(this);
 		lvChatRecord.setAdapter(new ChatMsgViewAdpater(ChatActivity.this, new ArrayList<ChatMsgItem>()));
-		iBtnBack.setOnClickListener(this);
 	}
 	
 	@Override
@@ -76,12 +75,15 @@ public class ChatActivity extends DaemsActivity implements OnClickListener, OnTo
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_send:
-			mInputMethodManager.hideSoftInputFromWindow(etInput.getWindowToken(), 0);
-			etInput.clearFocus();
+//			mInputMethodManager.hideSoftInputFromWindow(etInput.getWindowToken(), 0);
+//			etInput.clearFocus();
+			if (etInput.getText().toString().trim().isEmpty()) {
+				return;
+			}
 			sendMessage(etInput.getText().toString());
 			etInput.setText("");
 			break;
-		case R.id.ibtn_back:
+		case R.id.btn_back:
 			this.finish();
 			break;
 			default:

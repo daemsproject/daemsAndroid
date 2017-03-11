@@ -37,7 +37,6 @@ public class ChatMsgViewAdpater extends DaemsAdapter<ChatMsgItem> {
 	// 通过ViewHolder显示项的内容
 	static class ViewHolder {
 		public TextView tvSendTime;
-		public TextView tvUserName;
 		public TextView tvContent;
 		public boolean isComMsg = true;
 	}
@@ -62,8 +61,6 @@ public class ChatMsgViewAdpater extends DaemsAdapter<ChatMsgItem> {
 			viewHolder = new ViewHolder();
 			viewHolder.tvSendTime = (TextView) view
 					.findViewById(R.id.tv_sendtime);
-			viewHolder.tvUserName = (TextView) view
-					.findViewById(R.id.tv_username);
 			viewHolder.tvContent = (TextView) view
 					.findViewById(R.id.tv_chatcontent);
 			viewHolder.isComMsg = isComMsg;
@@ -73,7 +70,6 @@ public class ChatMsgViewAdpater extends DaemsAdapter<ChatMsgItem> {
 			viewHolder = (ViewHolder) view.getTag();
 		}
 		viewHolder.tvSendTime.setText(entity.getDate());
-		viewHolder.tvUserName.setText(entity.getName());
 		viewHolder.tvContent.setText(entity.getText());
 
 		return view;
