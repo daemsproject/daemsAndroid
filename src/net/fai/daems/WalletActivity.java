@@ -66,7 +66,7 @@ public class WalletActivity extends DaemsActivity implements
 			final Button btnYes = (Button) view.findViewById(R.id.btn_ok);
 			final Button btlNo = (Button) view.findViewById(R.id.btn_cancel);
 			PasswordDialog builder = new PasswordDialog(WalletActivity.this, DipPxUtils.dip2px(WalletActivity.this, 300),
-					DipPxUtils.dip2px(WalletActivity.this, 275), view, R.style.dialog);
+					DipPxUtils.dip2px(WalletActivity.this, 285), view, R.style.dialog);
 			// 设置对话框显示的View
 			// 点击确定是的监听
 			btnYes.setOnClickListener(new OnClickListener() {
