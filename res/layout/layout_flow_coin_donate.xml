@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="@string/trans_coin"
+            android:text="@string/donate_flow_coin"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
@@ -93,65 +93,10 @@
     </View>
     
     <RelativeLayout
-        android:id="@+id/ly_address"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/white" >
-
-        <TextView
-            android:id="@+id/tvAddress"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="13.333dp"
-            android:gravity="center"
-            android:text="@string/address"
-            android:textColor="@color/list_chat_name"
-            android:textSize="14sp" />
-
-         <EditText
-             android:id="@+id/etAddress"
-             android:layout_width="wrap_content"
-             android:layout_height="match_parent"
-             android:layout_alignParentTop="true"
-             android:layout_marginLeft="6.667dp"
-             android:layout_toRightOf="@+id/tvAddress"
-             android:background="@null"
-             android:gravity="center"
-             android:hint="@string/trans_address"
-             android:textColor="@color/list_chat_name"
-             android:textSize="14sp" />
-
-         <ImageButton
-             android:id="@+id/ibContact"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignParentRight="true"
-             android:layout_centerVertical="true"
-             android:layout_marginRight="13.333dp"
-             android:background="@color/white"
-             android:contentDescription="@string/contact"
-             android:src="@drawable/trans_contact" />
-
-         <ImageButton
-             android:id="@+id/ibQrCode"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignTop="@+id/ibContact"
-             android:layout_marginRight="14dp"
-             android:layout_toLeftOf="@+id/ibContact"
-             android:background="@color/white"
-             android:contentDescription="@string/search"
-             android:src="@drawable/trans_qrcode" />
-        
-    </RelativeLayout>
-    
-    <RelativeLayout
         android:id="@+id/ly_amount"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@drawable/layout_border" >
+        android:background="@drawable/layout_border_top_bottom" >
         <TextView
             android:id="@+id/tvAmount"
             android:layout_width="wrap_content"
@@ -182,7 +127,7 @@
         android:id="@+id/ly_password"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@color/white" >
+        android:background="@drawable/layout_border_bottom" >
 
         <TextView
             android:id="@+id/tvPassword"
@@ -228,6 +173,6 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:background="@drawable/shape_flow_coin_detail_background"
-        android:text="@string/confirm_trans"/>
+        android:text="@string/confirm_donate"/>
 
 </LinearLayout>

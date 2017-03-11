@@ -73,5 +73,58 @@ public class ActionSheet {
 
 		return dlg;
 	}
+	
+	public static Dialog showFlowCoinSheet(Context context, final OnActionSheetSelected actionSheetSelected,
+			OnCancelListener cancelListener) {
+		final Dialog dlg = new Dialog(context, R.style.ActionSheet);
+		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LinearLayout layout = (LinearLayout) inflater.inflate(R.layout.flow_coin_actionsheet, null);
+		final int cFullFillWidth = 10000;
+		layout.setMinimumWidth(cFullFillWidth);
+
+		TextView mTrans = (TextView) layout.findViewById(R.id.trans);
+		TextView mDonate = (TextView) layout.findViewById(R.id.donate);
+		TextView mCancel = (TextView) layout.findViewById(R.id.action_cancel);
+		
+		mTrans.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				actionSheetSelected.onClick(R.id.trans);
+				dlg.dismiss();
+			}
+		});
+
+		mDonate.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				actionSheetSelected.onClick(R.id.donate);
+				dlg.dismiss();
+			}
+		});
+
+		mCancel.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				actionSheetSelected.onClick(R.id.action_cancel);
+				dlg.dismiss();
+			}
+		});
+
+		Window w = dlg.getWindow();
+		WindowManager.LayoutParams lp = w.getAttributes();
+		lp.x = 0;
+		final int cMakeBottom = -1000;
+		lp.y = cMakeBottom;
+		lp.gravity = Gravity.BOTTOM;
+		dlg.onWindowAttributesChanged(lp);
+		dlg.setCanceledOnTouchOutside(false);
+		if (cancelListener != null)
+			dlg.setOnCancelListener(cancelListener);
+
+		dlg.setContentView(layout);
+		dlg.show();
+
+		return dlg;
+	}
 
 }

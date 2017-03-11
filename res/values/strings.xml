@@ -23,10 +23,13 @@
     <string name="trans">交易记录</string>
     <string name="expire">即将失效</string>
     <string name="trans_coin">转账</string>
+    <string name="donate_flow_coin">捐赠</string>
     <string name="left_coin">余额</string>
     <string name="address">地址</string>
-    <string name="amount">金额</string>
+    <string name="amount">数量</string>
     <string name="desc_badge_bg">notification badge</string>
     <string name="password">钱包密码</string>
+    <string name="password_text">密码</string>
     <string name="confirm_trans">确认转账</string>
+    <string name="confirm_donate">确认捐赠</string>
 </resources>

@@ -5,11 +5,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.fai.daems.ActionSheet.OnActionSheetSelected;
 import net.fai.daems.adapter.ExpirationAdapter;
 import net.fai.daems.adapter.item.ExpirationItem;
 import net.fai.daems.constant.ViewId;
 import net.fai.daems.utils.DipPxUtils;
 import net.fai.daems.utils.QRCodeUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -26,7 +29,7 @@ import android.widget.ListView;
  * @author Administrator
  *
  */
-public class FlowCoinDetailActivity extends DaemsActivity implements OnClickListener {
+public class FlowCoinDetailActivity extends DaemsActivity implements OnClickListener, OnCancelListener, OnActionSheetSelected {
 	
 	@ViewId(R.id.btn_back)
 	Button btnBack;
@@ -55,9 +58,7 @@ public class FlowCoinDetailActivity extends DaemsActivity implements OnClickList
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Intent intent1 = new Intent(FlowCoinDetailActivity.this,
-						FlowCoinTransActivity.class);
-				startActivity(intent1);
+				ActionSheet.showFlowCoinSheet(FlowCoinDetailActivity.this, FlowCoinDetailActivity.this, FlowCoinDetailActivity.this);
 			}
 		});
 		
@@ -92,5 +93,30 @@ public class FlowCoinDetailActivity extends DaemsActivity implements OnClickList
 		items.add(new ExpirationItem("3小时失效", "8888"));
 		items.add(new ExpirationItem("4小时失效", "8888"));
 		return items;
+	}
+
+	@Override
+	public void onClick(int whichButton) {
+		switch (whichButton) {
+		case R.id.trans:
+			Intent intent1 = new Intent(FlowCoinDetailActivity.this,
+					FlowCoinTransActivity.class);
+			startActivity(intent1);
+			break;
+		case R.id.donate:
+			Intent intent2 = new Intent(FlowCoinDetailActivity.this,
+					FlowCoinDonateActivity.class);
+			startActivity(intent2);
+			break;
+		case R.id.action_cancel:
+			break;
+		
+		}
+	}
+
+	@Override
+	public void onCancel(DialogInterface dialog) {
+		// TODO Auto-generated method stub
+		
 	}
 }
