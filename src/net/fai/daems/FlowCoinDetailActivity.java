@@ -10,10 +10,13 @@ import net.fai.daems.adapter.item.ExpirationItem;
 import net.fai.daems.constant.ViewId;
 import net.fai.daems.utils.DipPxUtils;
 import net.fai.daems.utils.QRCodeUtil;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -48,6 +51,15 @@ public class FlowCoinDetailActivity extends DaemsActivity implements OnClickList
 	public void onCreateActivity(Bundle savedInstanceState) {
 		adapter = new ExpirationAdapter(FlowCoinDetailActivity.this, getExpiration());
 		lvExpiration.setAdapter(adapter);
+		lvExpiration.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				Intent intent1 = new Intent(FlowCoinDetailActivity.this,
+						FlowCoinTransActivity.class);
+				startActivity(intent1);
+			}
+		});
 		
 		final String filePath = QRCodeUtil.getFileRoot(FlowCoinDetailActivity.this) + File.separator
                 + "qr_" + System.currentTimeMillis() + ".jpg";

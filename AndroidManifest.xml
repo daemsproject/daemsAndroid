@@ -31,7 +31,9 @@
         <activity android:name="net.fai.daems.AccountActivity" />
         <activity android:name="net.fai.daems.WalletActivity" />
         <activity android:name="net.fai.daems.ChatCoinDetailActivity" />
+        <activity android:name="net.fai.daems.ChatCoinTransActivity" />
         <activity android:name="net.fai.daems.FlowCoinDetailActivity" />
+        <activity android:name="net.fai.daems.FlowCoinTransActivity" />
         <activity android:name="net.fai.daems.ContactAddActivity" android:theme="@style/Theme.FloatActivity"/>
         <service android:name="net.fai.daems.BindService"></service>
         <service android:name="net.fai.daems.BoundaryReceiver"></service>

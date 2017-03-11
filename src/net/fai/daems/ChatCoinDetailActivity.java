@@ -11,6 +11,7 @@ import net.fai.daems.adapter.item.TransItem;
 import net.fai.daems.constant.ViewId;
 import net.fai.daems.utils.DipPxUtils;
 import net.fai.daems.utils.QRCodeUtil;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
@@ -50,6 +51,8 @@ public class ChatCoinDetailActivity extends DaemsActivity implements OnClickList
 		adapter = new TransAdapter(ChatCoinDetailActivity.this, getTrans());
 		chatCoinTrans.setAdapter(adapter);
 		
+		btnChatCoinSend.setOnClickListener(this);
+		
 		final String filePath = QRCodeUtil.getFileRoot(ChatCoinDetailActivity.this) + File.separator
                 + "qr_" + System.currentTimeMillis() + ".jpg";
 		
@@ -69,6 +72,9 @@ public class ChatCoinDetailActivity extends DaemsActivity implements OnClickList
 			this.finish();
 			break;
 		case R.id.btnChatCoinSend:
+			Intent intent = new Intent(ChatCoinDetailActivity.this,
+					ChatCoinTransActivity.class);
+			startActivity(intent);
 			break;
 			default:
 		}

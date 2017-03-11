@@ -8,6 +8,7 @@
     <string name="me">我</string>
     <string name="manageAccount">账户管理</string>
     <string name="search">搜索</string>
+    <string name="trans_address">转账地址</string>
     <string name="send">发送</string>
     <string name="contact_address">请输入联系人地址</string>
     <string name="add">添加</string>
@@ -21,5 +22,11 @@
     <string name="flowCoin">流量币</string>
     <string name="trans">交易记录</string>
     <string name="expire">即将失效</string>
+    <string name="trans_coin">转账</string>
+    <string name="left_coin">余额</string>
+    <string name="address">地址</string>
+    <string name="amount">金额</string>
     <string name="desc_badge_bg">notification badge</string>
+    <string name="password">钱包密码</string>
+    <string name="confirm_trans">确认转账</string>
 </resources>

@@ -32,6 +32,7 @@
             android:textColor="@color/list_chat_name"
             android:background="@color/white"
             android:drawableLeft="@drawable/flow_coin"
+            android:focusable="false"
             />
         
     </RelativeLayout>

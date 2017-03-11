@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greybackground"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/ly_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/background" >
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/trans_coin"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="6.667dp"
+            android:text="@string/flowCoin"
+            android:textSize="16sp"
+            android:textColor="@color/list_chat_date"
+            android:background="@color/background" 
+            android:drawableLeft="@drawable/back"
+            android:onClick="onClick"
+            />
+    </RelativeLayout>
+    <View
+        android:id="@+id/separator1"
+        android:layout_width="match_parent"
+        android:layout_height="13.333dp"
+        android:background="@color/greybackground" >
+    </View>
+    
+    <RelativeLayout
+        android:id="@+id/ly_left"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white" >
+
+        <TextView
+            android:id="@+id/tvLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13.333dp"
+            android:gravity="center"
+            android:text="1小时内失效"
+            android:textColor="@color/list_chat_name"
+            android:textSize="14sp" />
+        
+        <TextView
+            android:id="@+id/tvLeftCoin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="13.333dp"
+            android:gravity="center"
+            android:text="8888"
+            android:textColor="@color/list_chat_name"
+            android:textSize="14sp" />
+        
+        <ImageView
+            android:id="@+id/ivChatCoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="6.667dp"
+            android:layout_toLeftOf="@+id/tvLeftCoin"
+            android:contentDescription="@string/search"
+            android:src="@drawable/flow_coin" />
+        
+    </RelativeLayout>
+    
+    <View
+        android:id="@+id/separator2"
+        android:layout_width="match_parent"
+        android:layout_height="23.333dp"
+        android:background="@color/greybackground" >
+    </View>
+    
+    <RelativeLayout
+        android:id="@+id/ly_address"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white" >
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13.333dp"
+            android:gravity="center"
+            android:text="@string/address"
+            android:textColor="@color/list_chat_name"
+            android:textSize="14sp" />
+
+         <EditText
+             android:id="@+id/etAddress"
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_alignParentTop="true"
+             android:layout_marginLeft="6.667dp"
+             android:layout_toRightOf="@+id/tvAddress"
+             android:background="@null"
+             android:gravity="center"
+             android:hint="@string/trans_address"
+             android:textColor="@color/list_chat_name"
+             android:textSize="14sp" />
+
+         <ImageButton
+             android:id="@+id/ibContact"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignParentRight="true"
+             android:layout_centerVertical="true"
+             android:layout_marginRight="13.333dp"
+             android:background="@color/white"
+             android:contentDescription="@string/contact"
+             android:src="@drawable/trans_contact" />
+
+         <ImageButton
+             android:id="@+id/ibQrCode"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignTop="@+id/ibContact"
+             android:layout_marginRight="14dp"
+             android:layout_toLeftOf="@+id/ibContact"
+             android:background="@color/white"
+             android:contentDescription="@string/search"
+             android:src="@drawable/trans_qrcode" />
+        
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/ly_amount"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/layout_border" >
+        <TextView
+            android:id="@+id/tvAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13.333dp"
+            android:gravity="center"
+            android:text="@string/amount"
+            android:textColor="@color/list_chat_name"
+            android:textSize="14sp" />
+
+         <EditText
+             android:id="@+id/etAmount"
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_alignParentTop="true"
+             android:layout_marginLeft="6.667dp"
+             android:layout_toRightOf="@+id/tvAmount"
+             android:background="@null"
+             android:gravity="center"
+             android:hint="最多8888"
+             android:textColor="@color/list_chat_name"
+             android:textSize="14sp" />
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:id="@+id/ly_password"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white" >
+
+        <TextView
+            android:id="@+id/tvPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="13.333dp"
+            android:gravity="center"
+            android:text="@string/amount"
+            android:textColor="@color/list_chat_name"
+            android:textSize="14sp" />
+
+         <EditText
+             android:id="@+id/etPassword"
+             android:inputType="textPassword"
+             android:layout_width="wrap_content"
+             android:layout_height="match_parent"
+             android:layout_alignParentTop="true"
+             android:layout_marginLeft="6.667dp"
+             android:layout_toRightOf="@+id/tvPassword"
+             android:background="@null"
+             android:gravity="center"
+             android:hint="@string/password"
+             android:textColor="@color/list_chat_name"
+             android:textSize="14sp" />
+    </RelativeLayout>
+    
+    <View
+        android:id="@+id/separator3"
+        android:layout_width="match_parent"
+        android:layout_height="23.333dp"
+        android:background="@color/greybackground" >
+    </View>
+    
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginRight="6.667dp"
+        android:layout_marginLeft="6.667dp"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:background="@drawable/shape_flow_coin_detail_background"
+        android:text="@string/confirm_trans"/>
+
+</LinearLayout>
